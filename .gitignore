@@ -1,0 +1,9 @@
+# here we ignore files and folders we do not need in our repository
+#xcode
+build/*
+*.pbxuser
+*.mode1v3
+
+# osx
+.DS-Store
+profile
