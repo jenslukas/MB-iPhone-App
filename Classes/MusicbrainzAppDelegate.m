@@ -7,20 +7,29 @@
 //
 
 #import "MusicbrainzAppDelegate.h"
+#import "MainMenuController.h"
 
 @implementation MusicbrainzAppDelegate
 
-@synthesize window;
+@synthesize window, navController;
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-
-    // Override point for customization after application launch
+	MainMenuController *mainMenu = [[MainMenuController alloc] initWithStyle:UITableViewStyleGrouped];
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainMenu];
+	
+	self.navController = navigationController;
+	
+	[mainMenu release];
+	[navigationController release];
+		
+	[window addSubview:[navController view]];
     [window makeKeyAndVisible];
 }
 
 
 - (void)dealloc {
+	[navController release];
     [window release];
     [super dealloc];
 }
