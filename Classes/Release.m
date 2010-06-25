@@ -11,12 +11,13 @@
 
 
 @implementation Release
-@synthesize mbid, title, score, artist;
+@synthesize mbid, title, score, artist, date;
 
 -(void) dealloc {
 	[mbid release];
 	[title release];
 	[artist release];
+	[date release];
 	[super dealloc];
 }
 @end

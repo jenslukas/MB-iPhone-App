@@ -16,6 +16,7 @@
 	StringEditTableCell *editTableCell;
 	Search *search;
 }
+
 @property(nonatomic, retain) StringEditTableCell *editTableCell;
 @property(nonatomic, retain) Search *search;
 @end

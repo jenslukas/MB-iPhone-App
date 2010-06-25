@@ -16,11 +16,14 @@ NSString * const SearchTypeToString[] = {
 };
 
 @implementation Search
-@synthesize searchText;
+@synthesize searchText, detailSearch;
+
 -(void)setType:(SearchTypes)type {
 	searchType = type;
 }
+
 -(SearchTypes)getType {
 	return searchType;
 }
+
 @end

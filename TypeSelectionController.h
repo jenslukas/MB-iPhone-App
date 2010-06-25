@@ -15,6 +15,8 @@
 	@private
 	Search *search;
 	SearchTypes currentType;
+	
+	bool detailSearch;
 }
 @property(nonatomic, retain) Search *search;
 @end

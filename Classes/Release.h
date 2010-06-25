@@ -16,9 +16,11 @@
 	NSString *title;
 	NSInteger score;
 	NSString *artist;
+	NSString *date;
 }
 @property (nonatomic, retain) NSString *mbid;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic) NSInteger score;
 @property (nonatomic, retain) NSString *artist;
+@property (nonatomic, retain) NSString *date;
 @end

@@ -14,15 +14,24 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		84194D2311AEB2C700CCE8B8 /* MainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84194D2211AEB2C700CCE8B8 /* MainMenuController.m */; };
+		8477371511D4AEAF00EA7A9E /* albumcover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8477371411D4AEAF00EA7A9E /* albumcover.jpg */; };
+		8484536811CEF0AC00B8BBC5 /* ReleaseContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484536711CEF0AC00B8BBC5 /* ReleaseContoller.m */; };
+		8484538911CEF2A200B8BBC5 /* ReleaseLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484538811CEF2A200B8BBC5 /* ReleaseLookUpParser.m */; };
 		8487BC5B11BC6B2700506B80 /* AbstractXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487BC5A11BC6B2700506B80 /* AbstractXMLParser.m */; };
 		8487BC5E11BC6B5C00506B80 /* Release.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487BC5D11BC6B5C00506B80 /* Release.m */; };
-		8487BC6111BC6C7600506B80 /* ReleaseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487BC6011BC6C7600506B80 /* ReleaseParser.m */; };
+		8487BC6111BC6C7600506B80 /* ReleaseSearchParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487BC6011BC6C7600506B80 /* ReleaseSearchParser.m */; };
 		848AF02811BC5D7E0059FBB8 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 848AF02711BC5D7E0059FBB8 /* WebService.m */; };
 		848DCA2411BC1C2D00A456EF /* ServiceFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 848DCA2311BC1C2D00A456EF /* ServiceFacade.m */; };
 		848EAD6A11B9478C00357E7D /* StringEditTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EAD6911B9478C00357E7D /* StringEditTableCell.m */; };
 		848EAD8611B94EF100357E7D /* TypeSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EAD8511B94EF100357E7D /* TypeSelectionController.m */; };
 		848EAD8911B94F7B00357E7D /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EAD8811B94F7B00357E7D /* Search.m */; };
 		8496C6D311BD10CC007C1F94 /* ReleaseSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496C6D211BD10CC007C1F94 /* ReleaseSearchController.m */; };
+		849CC82711D16E4300CC46F7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CC82611D16E4300CC46F7 /* icon.png */; };
+		84B505C611D1002000B82131 /* MusicBrainzLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B505C511D1002000B82131 /* MusicBrainzLogo.png */; };
+		84B5062411D1050E00B82131 /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5062311D1050E00B82131 /* Artist.m */; };
+		84B5063711D10ADB00B82131 /* ArtistSearchParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5063611D10ADB00B82131 /* ArtistSearchParser.m */; };
+		84B5064A11D10EB800B82131 /* LabelSearchParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5064911D10EB800B82131 /* LabelSearchParser.m */; };
+		84B5064D11D10F1900B82131 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5064C11D10F1900B82131 /* Label.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,12 +46,17 @@
 		32CA4F630368D1EE00C91783 /* Musicbrainz_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Musicbrainz_Prefix.pch; sourceTree = "<group>"; };
 		84194D2111AEB2C700CCE8B8 /* MainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuController.h; sourceTree = "<group>"; };
 		84194D2211AEB2C700CCE8B8 /* MainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuController.m; sourceTree = "<group>"; };
+		8477371411D4AEAF00EA7A9E /* albumcover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = albumcover.jpg; sourceTree = "<group>"; };
+		8484536611CEF0AC00B8BBC5 /* ReleaseContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseContoller.h; sourceTree = "<group>"; };
+		8484536711CEF0AC00B8BBC5 /* ReleaseContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseContoller.m; sourceTree = "<group>"; };
+		8484538711CEF2A200B8BBC5 /* ReleaseLookUpParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseLookUpParser.h; sourceTree = "<group>"; };
+		8484538811CEF2A200B8BBC5 /* ReleaseLookUpParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseLookUpParser.m; sourceTree = "<group>"; };
 		8487BC5911BC6B2700506B80 /* AbstractXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractXMLParser.h; sourceTree = "<group>"; };
 		8487BC5A11BC6B2700506B80 /* AbstractXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractXMLParser.m; sourceTree = "<group>"; };
 		8487BC5C11BC6B5C00506B80 /* Release.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Release.h; sourceTree = "<group>"; };
 		8487BC5D11BC6B5C00506B80 /* Release.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Release.m; sourceTree = "<group>"; };
-		8487BC5F11BC6C7600506B80 /* ReleaseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseParser.h; sourceTree = "<group>"; };
-		8487BC6011BC6C7600506B80 /* ReleaseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseParser.m; sourceTree = "<group>"; };
+		8487BC5F11BC6C7600506B80 /* ReleaseSearchParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseSearchParser.h; sourceTree = "<group>"; };
+		8487BC6011BC6C7600506B80 /* ReleaseSearchParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseSearchParser.m; sourceTree = "<group>"; };
 		848AF02611BC5D7E0059FBB8 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		848AF02711BC5D7E0059FBB8 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
 		848DCA2211BC1C2D00A456EF /* ServiceFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFacade.h; path = Classes/ServiceFacade.h; sourceTree = "<group>"; };
@@ -55,6 +69,16 @@
 		848EAD8811B94F7B00357E7D /* Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.m; sourceTree = "<group>"; };
 		8496C6D111BD10CC007C1F94 /* ReleaseSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseSearchController.h; sourceTree = "<group>"; };
 		8496C6D211BD10CC007C1F94 /* ReleaseSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseSearchController.m; sourceTree = "<group>"; };
+		849CC82611D16E4300CC46F7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		84B505C511D1002000B82131 /* MusicBrainzLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MusicBrainzLogo.png; sourceTree = "<group>"; };
+		84B5062211D1050E00B82131 /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artist.h; sourceTree = "<group>"; };
+		84B5062311D1050E00B82131 /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
+		84B5063511D10ADB00B82131 /* ArtistSearchParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistSearchParser.h; sourceTree = "<group>"; };
+		84B5063611D10ADB00B82131 /* ArtistSearchParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistSearchParser.m; sourceTree = "<group>"; };
+		84B5064811D10EB800B82131 /* LabelSearchParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelSearchParser.h; sourceTree = "<group>"; };
+		84B5064911D10EB800B82131 /* LabelSearchParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelSearchParser.m; sourceTree = "<group>"; };
+		84B5064B11D10F1900B82131 /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
+		84B5064C11D10F1900B82131 /* Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Label.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Musicbrainz-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Musicbrainz-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +105,10 @@
 				848EAD8811B94F7B00357E7D /* Search.m */,
 				8487BC5C11BC6B5C00506B80 /* Release.h */,
 				8487BC5D11BC6B5C00506B80 /* Release.m */,
+				84B5062211D1050E00B82131 /* Artist.h */,
+				84B5062311D1050E00B82131 /* Artist.m */,
+				84B5064B11D10F1900B82131 /* Label.h */,
+				84B5064C11D10F1900B82131 /* Label.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -122,6 +150,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8477371411D4AEAF00EA7A9E /* albumcover.jpg */,
+				849CC82611D16E4300CC46F7 /* icon.png */,
+				84B505C511D1002000B82131 /* MusicBrainzLogo.png */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Musicbrainz-Info.plist */,
 			);
@@ -147,6 +178,8 @@
 				848EAD8511B94EF100357E7D /* TypeSelectionController.m */,
 				8496C6D111BD10CC007C1F94 /* ReleaseSearchController.h */,
 				8496C6D211BD10CC007C1F94 /* ReleaseSearchController.m */,
+				8484536611CEF0AC00B8BBC5 /* ReleaseContoller.h */,
+				8484536711CEF0AC00B8BBC5 /* ReleaseContoller.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -156,8 +189,14 @@
 			children = (
 				8487BC5911BC6B2700506B80 /* AbstractXMLParser.h */,
 				8487BC5A11BC6B2700506B80 /* AbstractXMLParser.m */,
-				8487BC5F11BC6C7600506B80 /* ReleaseParser.h */,
-				8487BC6011BC6C7600506B80 /* ReleaseParser.m */,
+				8487BC5F11BC6C7600506B80 /* ReleaseSearchParser.h */,
+				8487BC6011BC6C7600506B80 /* ReleaseSearchParser.m */,
+				8484538711CEF2A200B8BBC5 /* ReleaseLookUpParser.h */,
+				8484538811CEF2A200B8BBC5 /* ReleaseLookUpParser.m */,
+				84B5063511D10ADB00B82131 /* ArtistSearchParser.h */,
+				84B5063611D10ADB00B82131 /* ArtistSearchParser.m */,
+				84B5064811D10EB800B82131 /* LabelSearchParser.h */,
+				84B5064911D10EB800B82131 /* LabelSearchParser.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -216,6 +255,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				84B505C611D1002000B82131 /* MusicBrainzLogo.png in Resources */,
+				849CC82711D16E4300CC46F7 /* icon.png in Resources */,
+				8477371511D4AEAF00EA7A9E /* albumcover.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,8 +278,14 @@
 				848AF02811BC5D7E0059FBB8 /* WebService.m in Sources */,
 				8487BC5B11BC6B2700506B80 /* AbstractXMLParser.m in Sources */,
 				8487BC5E11BC6B5C00506B80 /* Release.m in Sources */,
-				8487BC6111BC6C7600506B80 /* ReleaseParser.m in Sources */,
+				8487BC6111BC6C7600506B80 /* ReleaseSearchParser.m in Sources */,
 				8496C6D311BD10CC007C1F94 /* ReleaseSearchController.m in Sources */,
+				8484536811CEF0AC00B8BBC5 /* ReleaseContoller.m in Sources */,
+				8484538911CEF2A200B8BBC5 /* ReleaseLookUpParser.m in Sources */,
+				84B5062411D1050E00B82131 /* Artist.m in Sources */,
+				84B5063711D10ADB00B82131 /* ArtistSearchParser.m in Sources */,
+				84B5064A11D10EB800B82131 /* LabelSearchParser.m in Sources */,
+				84B5064D11D10F1900B82131 /* Label.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

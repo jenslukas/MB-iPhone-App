@@ -21,17 +21,23 @@
 	self.title = @"Musicbrainz";
 	self.search = [Search alloc];
 	[search setType:ArtistType];
+	[self.view setBackgroundColor:[UIColor grayColor]];
+	
+	// hide navigation bar
+	[self.navigationController setNavigationBarHidden:YES];
 	
 	// init searchText cell
 	editTableCell = [[[StringEditTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EditCell"] autorelease];
 	[editTableCell setText:@"Search text"];
 	[editTableCell setType:@"String"];
-	
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	// hide navigation bar
+	[self.navigationController setNavigationBarHidden:YES animated:YES];	
+	
 	[self.tableView reloadData];
 }
 
@@ -143,8 +149,9 @@
 			// start search and open corresponding search results view
 			case 2: 
 			{
-				// set search text
+				// set search info
 				search.searchText = [editTableCell getText];
+				search.detailSearch = NO;
 				
 				// init view controller
 				ReleaseSearchController *releaseSearchController = [[ReleaseSearchController alloc] initWithStyle:UITableViewStyleGrouped];
@@ -161,6 +168,32 @@
 				break;
 		}
 	}
+}
+
+// table header with MB logo
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	// Create header view
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+	[view autorelease];
+	
+	if(section == 0) {
+		// load Image
+		UIImage *logo = [UIImage imageNamed:@"MusicBrainzLogo.png"];
+		UIImageView *imageView = [[[UIImageView alloc] initWithImage:logo] autorelease];
+		imageView.frame = CGRectMake(73, 5, 174, 120);
+		// add image to view
+		[view addSubview:imageView];		
+	}
+	return view;	
+}
+
+// section height (relevant for the MB logo)
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	CGFloat height = 0;
+	if(section == 0) {
+		height = 130;
+	}
+	return height;
 }
 
 - (void)dealloc {

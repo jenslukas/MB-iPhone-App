@@ -13,17 +13,20 @@
 #import "Search.h"
 
 @protocol DataCompleteDelegate
--(void) finishedRequest:(NSArray *) results;
+-(void) finishedRequest:(id) results;
 @end
-
 
 @interface ServiceFacade : NSObject <RequestCompleteDelegate, ParsingFinishedDelegate> {
 	WebService *service;
 	AbstractXMLParser *xmlParser;
 	NSArray *results;
 	id <DataCompleteDelegate> delegate;
+	Search *searchInfo;
+	
 }
 @property (nonatomic, retain) NSArray *results;
 @property (nonatomic, retain) id <DataCompleteDelegate> delegate;
+@property (nonatomic, retain) Search *searchInfo;
+
 -(void) search:(Search *)search;
 @end

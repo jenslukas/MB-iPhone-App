@@ -8,6 +8,7 @@
 // Abstract: Displays the results of the Release Search 
 
 #import "ReleaseSearchController.h"
+#import "ReleaseContoller.h"
 #import "Release.h"
 
 
@@ -15,6 +16,7 @@
 @synthesize releases;
 - (void)viewDidLoad {
     [super viewDidLoad];
+	[self.navigationController setNavigationBarHidden:NO];	
 	self.title = @"Release Search";
 }
 
@@ -66,10 +68,12 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+	// show detail page for selected release
+	Release *release = [releases objectAtIndex:indexPath.row];
+	ReleaseContoller *releaseController = [[ReleaseContoller alloc] init];
+	releaseController.release = release;
+	[self.navigationController pushViewController:releaseController	animated:YES];
+	[releaseController release];
 }
 
 

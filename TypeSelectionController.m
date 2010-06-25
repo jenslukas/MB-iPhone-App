@@ -14,6 +14,11 @@
 @implementation TypeSelectionController
 @synthesize search;
 
+-(void)viewDidLoad {
+	[self.navigationController setNavigationBarHidden:NO];
+	[self.view setBackgroundColor:[UIColor grayColor]];
+}
+
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];

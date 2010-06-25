@@ -21,9 +21,10 @@ extern NSString * const SearchTypeToString[];
 @interface Search : NSObject {
 	NSString *searchText;
 	SearchTypes searchType;
-	
+	bool detailSearch;
 }
 @property(nonatomic, retain) NSString *searchText;
+@property (nonatomic) bool detailSearch;
 
 -(void) setType:(SearchTypes)type;
 -(SearchTypes) getType;

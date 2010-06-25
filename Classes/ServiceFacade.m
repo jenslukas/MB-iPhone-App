@@ -9,12 +9,16 @@
 
 
 #import "ServiceFacade.h"
-#import "ReleaseParser.h"
+#import "ReleaseSearchParser.h"
+#import "ReleaseLookUpParser.h"
+#import "ArtistSearchParser.h"
+#import "LabelSearchParser.h"
 
 @implementation ServiceFacade
-@synthesize delegate, results;
+@synthesize delegate, results, searchInfo;
 
 -(void) search:(Search *)search {
+	self.searchInfo = search;
 	service = [WebService alloc];
 	service.delegate = self;
 	NSString *urlToCall;
@@ -39,8 +43,6 @@
 		case LabelType:
 			urlToCall = @"http://test.musicbrainz.org/ws/2/label?query=";
 			urlToCall = [[[urlToCall autorelease] stringByAppendingString:encodedQuery] retain];
-			break;			
-		default:
 			break;
 	}
 	
@@ -50,10 +52,40 @@
 	[urlToCall release];
 }
 
+-(void) getRelease:(Release *)release search:(Search *) search {
+	self.searchInfo = search;
+	service = [WebService alloc];
+	service.delegate = self;
+	NSString *urlToCall;
+
+	urlToCall = @"http://test.musicbrainz.org/ws/2/release/";
+	urlToCall = [[[urlToCall autorelease] stringByAppendingString:release.mbid] retain];
+
+	NSURL *url = [NSURL URLWithString:urlToCall];
+	[service getData:url];
+	[urlToCall release];
+}
+
 -(void)finishedDownload {
-	xmlParser = [ReleaseParser alloc];
-	xmlParser.delegate = self;
-	[xmlParser parse:service.xmlData];
+	if(searchInfo.detailSearch) {
+		xmlParser = [ReleaseLookUpParser alloc];
+		xmlParser.delegate = self;
+		[xmlParser parse:service.xmlData];		
+	} else {
+		switch([searchInfo getType]) {
+			case ArtistType:
+				xmlParser = [ArtistSearchParser alloc];
+				break;
+			case ReleaseType:
+				xmlParser = [ReleaseSearchParser alloc];
+				break;
+			case LabelType:
+				xmlParser = [LabelSearchParser alloc];
+				break;			
+		}
+		xmlParser.delegate = self;
+		[xmlParser parse:service.xmlData];		
+	}
 }
 
 -(void) finishedParsing {
