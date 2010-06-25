@@ -109,7 +109,8 @@
 			break;
 		case 1:
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			cell.textLabel.text = SearchTypeToString[[search getType]];
+			int searchType = [search getType];
+			cell.textLabel.text = SearchTypeToString[searchType];
 			break;
 		case 2:
 			cell.textLabel.text = @"Search";
