@@ -17,10 +17,12 @@
 	NSInteger score;
 	NSString *artist;
 	NSString *date;
+	NSMutableArray *tracks;
 }
 @property (nonatomic, retain) NSString *mbid;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic) NSInteger score;
 @property (nonatomic, retain) NSString *artist;
 @property (nonatomic, retain) NSString *date;
+@property (nonatomic, retain) NSMutableArray *tracks;
 @end

@@ -10,8 +10,9 @@
 #import "MainMenuController.h"
 #import "TypeSelectionController.h"
 #import "ServiceFacade.h"
-#import "ReleaseSearchController.h"
 
+#import "ReleaseSearchController.h"
+#import "ArtistSearchController.h"
 
 @implementation MainMenuController
 @synthesize editTableCell, search;
@@ -154,16 +155,28 @@
 				search.searchText = [editTableCell getText];
 				search.detailSearch = NO;
 				
-				// init view controller
-				ReleaseSearchController *releaseSearchController = [[ReleaseSearchController alloc] initWithStyle:UITableViewStyleGrouped];
+				
+				// init view controller depending on search type
+				id searchController;
+				
+				switch([search getType]) {
+					case ArtistType:
+						searchController = [[ArtistSearchController alloc] initWithStyle:UITableViewStyleGrouped];
+						break;
+					case ReleaseType:
+						searchController = [[ReleaseSearchController alloc] initWithStyle:UITableViewStyleGrouped];
+						break;
+					case LabelType:
+						break;			
+				}
 				
 				// init and start service
 				ServiceFacade *service = [ServiceFacade alloc];
-				service.delegate = releaseSearchController;
+				service.delegate = searchController;
 				[service search:search];
 				
 				// push view
-				[self.navigationController pushViewController:releaseSearchController animated:YES];
+				[self.navigationController pushViewController:searchController animated:YES];
 			}
 			default:
 				break;
