@@ -15,6 +15,7 @@
 	@private
 	StringEditTableCell *editTableCell;
 	Search *search;
+	UISwitch *advancedSearchSwitch;
 }
 
 @property(nonatomic, retain) StringEditTableCell *editTableCell;

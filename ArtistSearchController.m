@@ -8,7 +8,7 @@
 // Abstract: Displays the results of the Artist Search
 
 #import "ArtistSearchController.h"
-//#import "ArtistContoller.h"
+#import "ArtistController.h"
 #import "Artist.h"
 
 
@@ -68,6 +68,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	// show detail page for selected artist
+	Artist *artist = [artists objectAtIndex:indexPath.row];
+	
+	ArtistController *artistController = [[ArtistController alloc] init];
+	
+	// get details for release
+	ServiceFacade *serviceFacade = [ServiceFacade alloc];
+	serviceFacade.delegate = artistController;
+	[serviceFacade getArtist:artist];
+	
+	[self.navigationController pushViewController:artistController	animated:YES];
+	[artistController release];	
 }
 
 

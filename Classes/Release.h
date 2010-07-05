@@ -19,6 +19,7 @@
 	NSString *date;
 	NSMutableArray *tracks;
 }
+
 @property (nonatomic, retain) NSString *mbid;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic) NSInteger score;

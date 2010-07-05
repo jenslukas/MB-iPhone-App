@@ -10,6 +10,7 @@
 #import "Track.h"
 
 
+
 @implementation ReleaseContoller
 @synthesize release;
 
@@ -33,43 +34,44 @@
 	// create and set text for fields
 	// artist field
 	CGRect artistFrame = CGRectMake(5, 10, 180, 20);
-	UILabel *artistNameLabel = [[UILabel alloc] initWithFrame:artistFrame];
+	artistNameLabel = [[UILabel alloc] initWithFrame:artistFrame];
 	artistNameLabel.font = [UIFont boldSystemFontOfSize:16];
-	artistNameLabel.text = self.release.artist; 
+	artistNameLabel.backgroundColor = [UIColor colorWithRed:(115.0 / 255.0) green:(109.0 / 255.0) blue:(171.0 / 255.0) alpha:1.0];
 	[self.view addSubview:artistNameLabel];
 
 	// release name field
 	CGRect releaseFrame = CGRectMake(5, 30, 170, 15);
-	UILabel *releaseNameLabel = [[UILabel alloc] initWithFrame:releaseFrame];
+	releaseNameLabel = [[UILabel alloc] initWithFrame:releaseFrame];
 	releaseNameLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
-	releaseNameLabel.text = self.release.title; 
+	releaseNameLabel.backgroundColor = [UIColor colorWithRed:(115.0 / 255.0) green:(109.0 / 255.0) blue:(171.0 / 255.0) alpha:1.0];
 	[self.view addSubview:releaseNameLabel];
 
 	
 	// record field
 	CGRect recordFrame = CGRectMake(5, 65, 180, 15);
-	UILabel *recordLabel = [[UILabel alloc] initWithFrame:recordFrame];
+	recordLabel = [[UILabel alloc] initWithFrame:recordFrame];
 	recordLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
-	recordLabel.text = @"RecordLabel"; 
+	recordLabel.backgroundColor = [UIColor colorWithRed:(115.0 / 255.0) green:(109.0 / 255.0) blue:(171.0 / 255.0) alpha:1.0];
 	[self.view addSubview:recordLabel];	
 
 	// date field
 	CGRect dateFrame = CGRectMake(5, 80, 180, 15);
-	UILabel *dateLabel = [[UILabel alloc] initWithFrame:dateFrame];
+	dateLabel = [[UILabel alloc] initWithFrame:dateFrame];
+	dateLabel.backgroundColor = [UIColor colorWithRed:(115.0 / 255.0) green:(109.0 / 255.0) blue:(171.0 / 255.0) alpha:1.0];
 	dateLabel.font = [UIFont fontWithName:@"Helvetica" size:13];
-	dateLabel.text = self.release.date; 
 	[self.view addSubview:dateLabel];
 	
-	// album cover
+	// album coverUILabel *dateLabel
 	UIImage *cover = [UIImage imageNamed:@"albumcover.jpg"];
 	UIImageView *imageView = [[[UIImageView alloc] initWithImage:cover] autorelease];
 	imageView.frame = CGRectMake(190, 10, 120, 117);
 	[self.view addSubview:imageView];
 	
 	// tracks table view
-	tracksTable = [[UITableView alloc] initWithFrame:CGRectMake(220, 0, 320, 480) style:UITableViewStyleGrouped];
+	tracksTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 140, 320, 280) style:UITableViewStyleGrouped];
 	tracksTable.delegate = self;
 	tracksTable.dataSource = self;
+	tracksTable.backgroundColor = [UIColor colorWithRed:(115.0 / 255.0) green:(109.0 / 255.0) blue:(171.0 / 255.0) alpha:1.0];	
 	[self.view addSubview:tracksTable];
 }
 
@@ -136,8 +138,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
+- (void) finishedRequest:(id) results {
+	self.release = [results objectAtIndex:0];
+	artistNameLabel.text = self.release.artist; 
+	releaseNameLabel.text = self.release.title; 	
+	recordLabel.text = @"RecordLabel"; 	
+	dateLabel.text = self.release.date; 
+	[tracksTable reloadData];
+}
+
 
 - (void)dealloc {
+	[self.release release];
+	
     [super dealloc];
 }
 

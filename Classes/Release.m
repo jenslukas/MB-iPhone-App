@@ -9,7 +9,6 @@
 
 #import "Release.h"
 
-
 @implementation Release
 @synthesize mbid, title, score, artist, date, tracks;
 

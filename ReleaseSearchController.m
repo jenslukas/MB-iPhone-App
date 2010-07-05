@@ -70,8 +70,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	// show detail page for selected release
 	Release *release = [releases objectAtIndex:indexPath.row];
+	
 	ReleaseContoller *releaseController = [[ReleaseContoller alloc] init];
-	releaseController.release = release;
+	
+	// get details for release
+	ServiceFacade *serviceFacade = [ServiceFacade alloc];
+	serviceFacade.delegate = releaseController;
+	[serviceFacade getRelease:release];
+	
 	[self.navigationController pushViewController:releaseController	animated:YES];
 	[releaseController release];
 }

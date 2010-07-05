@@ -116,9 +116,18 @@
 		case 2:
 			cell.textLabel.text = @"Search";
 			break;
-		case 3:
-			cell.textLabel.text = @"Advanced Search";
+		case 3: {
+			UILabel *advancedSearchLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 200, 27)];
+			advancedSearchLabel.font = [UIFont boldSystemFontOfSize:16];
+			advancedSearchLabel.text = @"Advanced Search";
+
+			advancedSearchSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(200, 8, 95, 27)];
+
+			[cell.contentView addSubview:advancedSearchLabel];
+			[cell.contentView addSubview:advancedSearchSwitch];
+			//cell.textLabel.text = @"Advanced Search";
 			break;
+		}
 		default:
 			break;
 	}
@@ -171,9 +180,10 @@
 				}
 				
 				// init and start service
-				ServiceFacade *service = [ServiceFacade alloc];
+				ServiceFacade *service = [[ServiceFacade alloc] autorelease];
 				service.delegate = searchController;
 				[service search:search];
+				
 				
 				// push view
 				[self.navigationController pushViewController:searchController animated:YES];

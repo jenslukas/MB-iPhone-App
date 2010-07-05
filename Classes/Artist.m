@@ -10,5 +10,5 @@
 
 
 @implementation Artist
-@synthesize mbid, name, score;
+@synthesize mbid, name, score, rating, releases;
 @end

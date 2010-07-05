@@ -21,6 +21,8 @@
 		8487BC5B11BC6B2700506B80 /* AbstractXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487BC5A11BC6B2700506B80 /* AbstractXMLParser.m */; };
 		8487BC5E11BC6B5C00506B80 /* Release.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487BC5D11BC6B5C00506B80 /* Release.m */; };
 		8487BC6111BC6C7600506B80 /* ReleaseSearchParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487BC6011BC6C7600506B80 /* ReleaseSearchParser.m */; };
+		84884D8A11E0B53300E40506 /* ArtistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84884D8911E0B53300E40506 /* ArtistController.m */; };
+		84884D9311E0B7A100E40506 /* ArtistLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84884D9211E0B7A100E40506 /* ArtistLookUpParser.m */; };
 		848AF02811BC5D7E0059FBB8 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 848AF02711BC5D7E0059FBB8 /* WebService.m */; };
 		848DCA2411BC1C2D00A456EF /* ServiceFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 848DCA2311BC1C2D00A456EF /* ServiceFacade.m */; };
 		848EAD6A11B9478C00357E7D /* StringEditTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EAD6911B9478C00357E7D /* StringEditTableCell.m */; };
@@ -61,6 +63,10 @@
 		8487BC5D11BC6B5C00506B80 /* Release.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Release.m; sourceTree = "<group>"; };
 		8487BC5F11BC6C7600506B80 /* ReleaseSearchParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseSearchParser.h; sourceTree = "<group>"; };
 		8487BC6011BC6C7600506B80 /* ReleaseSearchParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseSearchParser.m; sourceTree = "<group>"; };
+		84884D8811E0B53300E40506 /* ArtistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistController.h; sourceTree = "<group>"; };
+		84884D8911E0B53300E40506 /* ArtistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistController.m; sourceTree = "<group>"; };
+		84884D9111E0B7A100E40506 /* ArtistLookUpParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistLookUpParser.h; sourceTree = "<group>"; };
+		84884D9211E0B7A100E40506 /* ArtistLookUpParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistLookUpParser.m; sourceTree = "<group>"; };
 		848AF02611BC5D7E0059FBB8 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		848AF02711BC5D7E0059FBB8 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
 		848DCA2211BC1C2D00A456EF /* ServiceFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFacade.h; path = Classes/ServiceFacade.h; sourceTree = "<group>"; };
@@ -190,6 +196,8 @@
 				8484536711CEF0AC00B8BBC5 /* ReleaseContoller.m */,
 				8477373B11D4BCE800EA7A9E /* ArtistSearchController.h */,
 				8477373C11D4BCE800EA7A9E /* ArtistSearchController.m */,
+				84884D8811E0B53300E40506 /* ArtistController.h */,
+				84884D8911E0B53300E40506 /* ArtistController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -207,6 +215,8 @@
 				84B5063611D10ADB00B82131 /* ArtistSearchParser.m */,
 				84B5064811D10EB800B82131 /* LabelSearchParser.h */,
 				84B5064911D10EB800B82131 /* LabelSearchParser.m */,
+				84884D9111E0B7A100E40506 /* ArtistLookUpParser.h */,
+				84884D9211E0B7A100E40506 /* ArtistLookUpParser.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -298,6 +308,8 @@
 				84B5064D11D10F1900B82131 /* Label.m in Sources */,
 				8477373D11D4BCE800EA7A9E /* ArtistSearchController.m in Sources */,
 				84A0D89911D8D645009F2888 /* Track.m in Sources */,
+				84884D8A11E0B53300E40506 /* ArtistController.m in Sources */,
+				84884D9311E0B7A100E40506 /* ArtistLookUpParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

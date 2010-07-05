@@ -12,10 +12,9 @@
 
 
 @implementation ReleaseLookUpParser
-@synthesize currentRelease;
+@synthesize currentRelease, currentTrack;
 
 // Constants for the XML element names used while parsing
-static NSString *RELEASELIST = @"release-list";
 static NSString *RELEASE = @"release";
 static NSString *TITLE = @"title";
 static NSString *ARTIST = @"name";
@@ -38,13 +37,13 @@ static NSString *LENGTH = @"length";
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *) qualifiedName attributes:(NSDictionary *)attributeDict {
-    if ([elementName isEqualToString:RELEASELIST]) {
-		// init results array
+	if([elementName isEqualToString:RELEASE]) {
 		results = [NSMutableArray array];
-	} else if([elementName isEqualToString:RELEASE]) {
+		
 		parsingTrack = NO;
 		Release *release = [[Release alloc] init];
 		release.mbid = [attributeDict valueForKey:@"id"];
+		release.tracks = [NSMutableArray array];
 		
 		self.currentRelease = release;
 		[release release];
@@ -55,7 +54,7 @@ static NSString *LENGTH = @"length";
 		storingCharacters = YES;
 	} else if([elementName isEqualToString:TRACK]) {
 		Track *track = [[Track alloc] init];
-		currentTrack = track;
+		self.currentTrack = track;
 		[track release];
 		
 		parsingTrack = YES;
@@ -65,10 +64,9 @@ static NSString *LENGTH = @"length";
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-	if ([elementName isEqualToString:RELEASELIST]) {
-		[super finished];
-	} else if ([elementName isEqualToString:RELEASE]) {
+	if ([elementName isEqualToString:RELEASE]) {
 		[results addObject:self.currentRelease];
+		[super finished];
 	} else if ([elementName isEqualToString:TITLE]) {
 		if(parsingTrack) {
 			currentTrack.title = [NSString stringWithString:self.currentString];

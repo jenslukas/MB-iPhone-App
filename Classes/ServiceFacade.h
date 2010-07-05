@@ -11,6 +11,8 @@
 #import "WebService.h"
 #import "AbstractXMLParser.h"
 #import "Search.h"
+#import "Release.h"
+#import "Artist.h"
 
 @protocol DataCompleteDelegate
 -(void) finishedRequest:(id) results;
@@ -22,11 +24,13 @@
 	NSArray *results;
 	id <DataCompleteDelegate> delegate;
 	Search *searchInfo;
-	
 }
+
 @property (nonatomic, retain) NSArray *results;
 @property (nonatomic, retain) id <DataCompleteDelegate> delegate;
 @property (nonatomic, retain) Search *searchInfo;
 
 -(void) search:(Search *)search;
+-(void) getRelease:(Release *)release;
+-(void) getArtist:(Artist *)artist;
 @end
