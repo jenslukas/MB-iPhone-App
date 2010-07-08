@@ -2,10 +2,12 @@
 //  ReleaseSearchController.m
 //  Musicbrainz
 //
-//  Created by Jens Lukas on 6/7/10.
-//  Copyright 2010 Metabrainz Foundation. All rights reserved.
+//  Created by Jens Lukas on 7/4/10.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
-// Abstract: Displays the results of the Release Search 
+//  This program is made available under the terms of the MIT License.
+//
+//	Abstract: Displays the results of the Release Search
 
 #import "ReleaseSearchController.h"
 #import "ReleaseContoller.h"

@@ -3,13 +3,15 @@
 //  Musicbrainz
 //
 //  Created by Jens Lukas on 6/4/10.
-//  Copyright 2010 Metabrainz Foundation. All rights reserved.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
+//
+//  This program is made available under the terms of the MIT License.
 //
 // Abstract: Responsible for retrieving data from a given URL
 
 #import <Foundation/Foundation.h>
 
-// Delegate
+// interface
 @protocol RequestCompleteDelegate
 -(void)finishedDownload;
 @end

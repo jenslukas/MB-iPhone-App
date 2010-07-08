@@ -1,10 +1,12 @@
 //
 //  StringEditView.m
-//  Edit cell for the EditDetailView
 //
 //  Created by Jens Lukas on 3/17/10.
-//  Copyright 2010 itelligence Ag. All rights reserved.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
+//  This program is made available under the terms of the MIT License.
+//
+//	Abstract: UITableViewCell with integrated UITextField
 
 #import "StringEditTableCell.h"
 

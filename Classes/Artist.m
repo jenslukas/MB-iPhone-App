@@ -2,9 +2,12 @@
 //  Artist.m
 //  Musicbrainz
 //
-//  Created by Peter Katheter on 6/22/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by Jens Lukas on 6/22/10.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
+//  This program is made available under the terms of the MIT License.
+//
+//	Abstract: Artist Entity
 
 #import "Artist.h"
 

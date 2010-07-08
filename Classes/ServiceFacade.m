@@ -2,10 +2,12 @@
 //  ServiceFacade.m
 //  Musicbrainz
 //
-//  Created by Jens Lukas on 6/6/10.
-//  Copyright 2010 Metabrainz Foundation. All rights reserved.
+//  Created by Jens Lukas on 6/4/10.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
-// Abstract: Facade for all service request, responsible for retrieving and parsing data
+//  This program is made available under the terms of the MIT License.
+//
+//	Abstract: Facade for all service request, responsible for retrieving and parsing data
 
 
 #import "ServiceFacade.h"
@@ -18,6 +20,7 @@
 @implementation ServiceFacade
 @synthesize delegate, results, searchInfo;
 
+// query for entity defined in Search object 
 -(void) search:(Search *)search {
 	self.searchInfo = search;
 	service = [WebService alloc];
@@ -53,6 +56,7 @@
 	[urlToCall release];
 }
 
+// get specific release entity by MBID
 -(void) getRelease:(Release *)release {
 	self.searchInfo = [[Search alloc] init];
 	self.searchInfo.detailSearch = YES;
@@ -64,13 +68,14 @@
 	NSString *urlToCall;
 	urlToCall = @"http://test.musicbrainz.org/ws/2/release/";
 	urlToCall = [[[urlToCall autorelease] stringByAppendingString:release.mbid] retain];
-	urlToCall = [[[urlToCall autorelease] stringByAppendingString:@"?inc=recordings"] retain];
+	urlToCall = [[[urlToCall autorelease] stringByAppendingString:@"?inc=recordings+artists"] retain];
 
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	[service getData:url];
 	[urlToCall release];
 }
 
+// get specific artist by Artist MBID
 -(void) getArtist:(Artist *)artist {
 	self.searchInfo = [[Search alloc] init];
 	self.searchInfo.detailSearch = YES;
@@ -90,6 +95,7 @@
 	
 }
 
+// called by Web Service when data download finished
 -(void)finishedDownload {
 	if(searchInfo.detailSearch) {
 		switch([searchInfo getType]) {
@@ -123,13 +129,14 @@
 	}
 }
 
+// called by XML Parser when data parsing finisheds
 -(void) finishedParsing {
 	results = [NSArray  arrayWithArray:xmlParser.results];
 	[delegate finishedRequest:results];
 	[searchInfo release];
 	delegate = nil;
-	results = nil;
-	[results release];
+	//results = nil;
+	//[results release];
 	//[xmlParser release];
 	[service release];
 }

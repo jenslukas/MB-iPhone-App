@@ -10,8 +10,11 @@
 //  Abstract: Abstract class for XML parsing
 
 #import <Foundation/Foundation.h>
+
+// interface
 @protocol ParsingFinishedDelegate
--(void) finishedParsing;
+//inform delegate that parsing finished
+- (void) finishedParsing;
 @end
 
 @interface AbstractXMLParser : NSObject {
@@ -22,6 +25,7 @@
 	id <ParsingFinishedDelegate> delegate;
 	NSMutableArray *results;
 }
+
 @property(nonatomic, retain) id <ParsingFinishedDelegate> delegate;
 @property(nonatomic, retain) NSMutableArray *results;
 @property(nonatomic, retain) NSMutableString *currentString; 

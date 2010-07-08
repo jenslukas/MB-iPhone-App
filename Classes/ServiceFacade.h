@@ -2,10 +2,12 @@
 //  ServiceFacade.h
 //  Musicbrainz
 //
-//  Created by Jens Lukas on 6/6/10.
-//  Copyright 2010 Metabrainz Foundation. All rights reserved.
+//  Created by Jens Lukas on 6/4/10.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
-// Abstract: Facade for all service request, responsible for retrieving and parsing data
+//  This program is made available under the terms of the MIT License.
+//
+//	Abstract: Facade for all service request, responsible for delgating retrieval and parsing of the data
 
 #import <Foundation/Foundation.h>
 #import "WebService.h"

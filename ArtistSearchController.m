@@ -2,10 +2,12 @@
 //  ArtistSearchController.m
 //  Musicbrainz
 //
-//  Created by Jens Lukas on 6/23/10.
-//  Copyright 2010 Metabrainz Foundation. All rights reserved.
+//  Created by Jens Lukas on 7/4/10.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
-// Abstract: Displays the results of the Artist Search
+//  This program is made available under the terms of the MIT License.
+//
+//	Abstract: Displays the results of the Artist Search
 
 #import "ArtistSearchController.h"
 #import "ArtistController.h"
@@ -18,25 +20,8 @@
     [super viewDidLoad];
 	[self.navigationController setNavigationBarHidden:NO];	
 	self.title = @"Artist Search";
+	self.view.backgroundColor = [UIColor orangeColor];
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
 
 #pragma mark Table view methods
 
@@ -81,14 +66,15 @@
 	[artistController release];	
 }
 
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 - (void) finishedRequest:(NSArray *) results {
 	self.artists = [NSArray arrayWithArray:results];
 	[self.tableView reloadData];
+}
+
+- (void)dealloc {
+	artists = nil;
+	[artists release];
+    [super dealloc];
 }
 
 @end

@@ -1,15 +1,16 @@
 //
-//  ReleaseContoller.m
+//  ReleaseController.h
 //  Musicbrainz
 //
-//  Created by Peter Katheter on 6/21/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by Jens Lukas on 7/4/10.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
+//  This program is made available under the terms of the MIT License.
+//
+//	Abstract: Detail page for release entity
 
 #import "ReleaseContoller.h"
 #import "Track.h"
-
-
 
 @implementation ReleaseContoller
 @synthesize release;
@@ -78,34 +79,6 @@
 -(void) edit {
 
 }
-								   
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-*/
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
 
 #pragma mark Table view methods
 
@@ -150,7 +123,6 @@
 
 - (void)dealloc {
 	[self.release release];
-	
     [super dealloc];
 }
 

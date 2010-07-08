@@ -2,8 +2,10 @@
 //  MainMenuController.h
 //  Musicbrainz
 //
-//  Created by Jens Lukas on 5/27/10.
-//  Copyright 2010 Metabrainz Foundation. All rights reserved.
+//  Created by Jens Lukas on 7/4/10.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
+//
+//  This program is made available under the terms of the MIT License.
 //
 //	Abstract: Main Menu view with basic search
 
@@ -13,6 +15,7 @@
 
 #import "ReleaseSearchController.h"
 #import "ArtistSearchController.h"
+#import "LabelSearchController.h"
 
 @implementation MainMenuController
 @synthesize editTableCell, search;
@@ -176,6 +179,7 @@
 						searchController = [[ReleaseSearchController alloc] initWithStyle:UITableViewStyleGrouped];
 						break;
 					case LabelType:
+						searchController = [[LabelSearchController alloc] initWithStyle:UITableViewStyleGrouped];
 						break;			
 				}
 				

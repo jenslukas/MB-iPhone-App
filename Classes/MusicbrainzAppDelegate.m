@@ -2,9 +2,12 @@
 //  MusicbrainzAppDelegate.m
 //  Musicbrainz
 //
-//  Created by Peter Neter on 5/27/10.
-//  Copyright __MyCompanyName__ 2010. All rights reserved.
+//  Created by Jens Lukas on 5/27/10.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
+//  This program is made available under the terms of the MIT License.
+//
+//	Abstract: Applications entry point
 
 #import "MusicbrainzAppDelegate.h"
 #import "MainMenuController.h"

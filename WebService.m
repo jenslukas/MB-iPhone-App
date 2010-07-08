@@ -3,16 +3,18 @@
 //  Musicbrainz
 //
 //  Created by Jens Lukas on 6/4/10.
-//  Copyright 2010 Metabrainz Foundation. All rights reserved.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
-// Abstract: Responsible for retrieving data from a given URL
+//  This program is made available under the terms of the MIT License.
+//
+//	Abstract: Responsible for retrieving data from a given URL
 
 #import "WebService.h"
-
 
 @implementation WebService
 @synthesize xmlData, delegate;
 
+// get data from given URL
 -(void)getData:(NSURL *)url {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	xmlData = [NSMutableData alloc];

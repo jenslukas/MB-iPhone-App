@@ -1,10 +1,13 @@
 //
-//  ReleaseContoller.h
+//  ReleaseController.h
 //  Musicbrainz
 //
-//  Created by Peter Katheter on 6/21/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by Jens Lukas on 7/4/10.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
+//  This program is made available under the terms of the MIT License.
+//
+//	Abstract: Detail page for release entity
 
 #import <UIKit/UIKit.h>
 #import "Release.h"
