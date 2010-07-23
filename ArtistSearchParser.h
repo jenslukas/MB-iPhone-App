@@ -15,6 +15,7 @@
 
 @interface ArtistSearchParser : AbstractXMLParser {
 	Artist *currentArtist;
+	bool parsingArtist;
 }
 @property (nonatomic, retain) Artist *currentArtist;
 @end

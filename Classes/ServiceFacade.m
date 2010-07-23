@@ -68,7 +68,7 @@
 	NSString *urlToCall;
 	urlToCall = @"http://test.musicbrainz.org/ws/2/release/";
 	urlToCall = [[[urlToCall autorelease] stringByAppendingString:release.mbid] retain];
-	urlToCall = [[[urlToCall autorelease] stringByAppendingString:@"?inc=recordings+artists"] retain];
+	urlToCall = [[[urlToCall autorelease] stringByAppendingString:@"?inc=recordings+artists+tags"] retain];
 
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	[service getData:url];
@@ -87,7 +87,7 @@
 	NSString *urlToCall;
 	urlToCall = @"http://test.musicbrainz.org/ws/2/artist/";
 	urlToCall = [[[urlToCall autorelease] stringByAppendingString:artist.mbid] retain];
-	urlToCall = [[[urlToCall autorelease] stringByAppendingString:@"?inc=releases"] retain];
+	urlToCall = [[[urlToCall autorelease] stringByAppendingString:@"?inc=releases+tags+ratings"] retain];
 	
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	[service getData:url];

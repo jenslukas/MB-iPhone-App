@@ -25,7 +25,7 @@ static NSString *ARTISTNAME = @"name";
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     parser.delegate = self;
 	currentString = [NSMutableString string];
-	
+	parsingArtist = NO;
 	[parser parse];
 	
 	[parser release];
@@ -38,7 +38,7 @@ static NSString *ARTISTNAME = @"name";
 	} else if([elementName isEqualToString:ARTIST]) {
 		Artist *artist = [[Artist alloc] init];
 		artist.mbid = [attributeDict valueForKey:@"id"];
-		
+		parsingArtist = YES;
 		self.currentArtist = artist;
 		[artist release];
 		
@@ -55,9 +55,11 @@ static NSString *ARTISTNAME = @"name";
 	} else if ([elementName isEqualToString:ARTIST]) {
 		[results addObject:self.currentArtist];
 	} else if ([elementName isEqualToString:ARTISTNAME]) {
-		self.currentArtist.name = [NSString stringWithString:self.currentString];
+		if(parsingArtist) {
+			self.currentArtist.name = [NSString stringWithString:self.currentString];
+			parsingArtist = NO;
+		}
 	}
-	
     storingCharacters = NO;
 }
 

@@ -13,5 +13,5 @@
 
 
 @implementation Track
-@synthesize mbid, position, title, length;
+@synthesize mbid, position, title, length, tags;
 @end

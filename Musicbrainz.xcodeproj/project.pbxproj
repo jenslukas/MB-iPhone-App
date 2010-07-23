@@ -25,6 +25,7 @@
 		84884D8A11E0B53300E40506 /* ArtistController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84884D8911E0B53300E40506 /* ArtistController.m */; };
 		84884D9311E0B7A100E40506 /* ArtistLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84884D9211E0B7A100E40506 /* ArtistLookUpParser.m */; };
 		848AF02811BC5D7E0059FBB8 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 848AF02711BC5D7E0059FBB8 /* WebService.m */; };
+		848AF46411F9A4F200E0244F /* LabelLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 848AF46311F9A4F200E0244F /* LabelLookUpParser.m */; };
 		848DCA2411BC1C2D00A456EF /* ServiceFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 848DCA2311BC1C2D00A456EF /* ServiceFacade.m */; };
 		848EAD6A11B9478C00357E7D /* StringEditTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EAD6911B9478C00357E7D /* StringEditTableCell.m */; };
 		848EAD8611B94EF100357E7D /* TypeSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EAD8511B94EF100357E7D /* TypeSelectionController.m */; };
@@ -72,6 +73,8 @@
 		84884D9211E0B7A100E40506 /* ArtistLookUpParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistLookUpParser.m; sourceTree = "<group>"; };
 		848AF02611BC5D7E0059FBB8 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		848AF02711BC5D7E0059FBB8 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
+		848AF46211F9A4F200E0244F /* LabelLookUpParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelLookUpParser.h; sourceTree = "<group>"; };
+		848AF46311F9A4F200E0244F /* LabelLookUpParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelLookUpParser.m; sourceTree = "<group>"; };
 		848DCA2211BC1C2D00A456EF /* ServiceFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFacade.h; path = Classes/ServiceFacade.h; sourceTree = "<group>"; };
 		848DCA2311BC1C2D00A456EF /* ServiceFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceFacade.m; path = Classes/ServiceFacade.m; sourceTree = "<group>"; };
 		848EAD6811B9478C00357E7D /* StringEditTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringEditTableCell.h; sourceTree = "<group>"; };
@@ -243,6 +246,8 @@
 				84884D9211E0B7A100E40506 /* ArtistLookUpParser.m */,
 				8484538711CEF2A200B8BBC5 /* ReleaseLookUpParser.h */,
 				8484538811CEF2A200B8BBC5 /* ReleaseLookUpParser.m */,
+				848AF46211F9A4F200E0244F /* LabelLookUpParser.h */,
+				848AF46311F9A4F200E0244F /* LabelLookUpParser.m */,
 			);
 			name = LookUpParser;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 				84884D8A11E0B53300E40506 /* ArtistController.m in Sources */,
 				84884D9311E0B7A100E40506 /* ArtistLookUpParser.m in Sources */,
 				846FE8B211E447850061A046 /* LabelSearchController.m in Sources */,
+				848AF46411F9A4F200E0244F /* LabelLookUpParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +370,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Musicbrainz_Prefix.pch;
 				INFOPLIST_FILE = "Musicbrainz-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PRODUCT_NAME = Musicbrainz;
 			};
 			name = Debug;

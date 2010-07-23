@@ -120,6 +120,7 @@
 			cell.textLabel.text = @"Search";
 			break;
 		case 3: {
+			/*
 			UILabel *advancedSearchLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 200, 27)];
 			advancedSearchLabel.font = [UIFont boldSystemFontOfSize:16];
 			advancedSearchLabel.text = @"Advanced Search";
@@ -129,7 +130,12 @@
 			[cell.contentView addSubview:advancedSearchLabel];
 			[cell.contentView addSubview:advancedSearchSwitch];
 			//cell.textLabel.text = @"Advanced Search";
-			break;
+			*/
+			UISwitch *advancedSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
+			[cell addSubview:advancedSwitch];
+			cell.textLabel.text = @"Advanced Search";
+			cell.accessoryView = advancedSwitch;
+			 break;
 		}
 		default:
 			break;

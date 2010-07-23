@@ -19,12 +19,13 @@
 // Constants for the XML element names used while parsing
 static NSString *RELEASE = @"release";
 static NSString *TITLE = @"title";
-static NSString *ARTIST = @"name";
+static NSString *NAME = @"name";
 static NSString *DATE = @"date";
 static NSString *TRACK = @"track";
 static NSString *POSITION = @"position";
 static NSString *RECORDING = @"recording";
 static NSString *LENGTH = @"length";
+static NSString *TAGLIST = @"tag-list";
 
 -(void) parse:(NSData *) data {
 	xmlData = data;
@@ -32,7 +33,7 @@ static NSString *LENGTH = @"length";
     parser.delegate = self;
 	currentString = [NSMutableString string];
 	parsingTrack = NO;
-	
+	parsingTags = NO;
 	[parser parse];
 
 	[parser release];
@@ -51,7 +52,7 @@ static NSString *LENGTH = @"length";
 		[release release];
 		
 		//currentRelease.score = [attributeDict valueForKey:@"ext:score"];
-	} else if([elementName isEqualToString:TITLE]||[elementName isEqualToString:ARTIST]||[elementName isEqualToString:DATE]||[elementName isEqualToString:LENGTH]||[elementName isEqualToString:POSITION]) {
+	} else if([elementName isEqualToString:TITLE]||[elementName isEqualToString:NAME]||[elementName isEqualToString:DATE]||[elementName isEqualToString:LENGTH]||[elementName isEqualToString:POSITION]) {
 		[currentString setString:@""];
 		storingCharacters = YES;
 	} else if([elementName isEqualToString:TRACK]) {
@@ -62,6 +63,8 @@ static NSString *LENGTH = @"length";
 		parsingTrack = YES;
 	} else if([elementName isEqualToString:RECORDING]) {
 		currentTrack.mbid = [attributeDict valueForKey:@"id"];
+	} else if([elementName isEqualToString:TAGLIST]) {
+		parsingTags = YES;
 	}
 }
 
@@ -75,8 +78,12 @@ static NSString *LENGTH = @"length";
 		} else {
 			self.currentRelease.title = [NSString stringWithString:self.currentString];
 		}
-	} else if ([elementName isEqualToString:ARTIST]) {
-		self.currentRelease.artist = [NSString stringWithString:self.currentString];
+	} else if ([elementName isEqualToString:NAME]) {
+		if(parsingTags) {
+			[self.currentRelease.tags addObject:[NSString stringWithString:self.currentString]];
+		} else {
+			self.currentRelease.artist = [NSString stringWithString:self.currentString];
+		}
 	} else if ([elementName isEqualToString:DATE]) {
 		self.currentRelease.date = [NSString stringWithString:self.currentString];
 	} else if ([elementName isEqualToString:POSITION]) {

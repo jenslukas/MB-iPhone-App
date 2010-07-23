@@ -16,10 +16,12 @@
 	NSInteger position;
 	NSString *title;
 	NSInteger length;
+	NSMutableArray *tags;
 }
 
 @property (nonatomic, retain) NSString *mbid;
 @property (nonatomic) NSInteger position;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic) NSInteger length;
+@property (nonatomic, retain) NSMutableArray *tags;
 @end

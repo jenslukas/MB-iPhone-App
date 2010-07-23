@@ -13,5 +13,5 @@
 
 
 @implementation Label
-@synthesize mbid, name, score;
+@synthesize mbid, type, name, score, tags, releases;
 @end

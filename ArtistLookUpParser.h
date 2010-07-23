@@ -17,6 +17,8 @@
 @interface ArtistLookUpParser : AbstractXMLParser {
 	Artist *currentArtist;
 	Release *currentRelease;
+	bool parsingArtist;
+	bool parsingTag;
 }
 
 @property (nonatomic, retain) Artist *currentArtist;

@@ -12,7 +12,7 @@
 #import "Release.h"
 
 @implementation Release
-@synthesize mbid, title, score, artist, date, tracks;
+@synthesize mbid, title, score, artist, date, tracks, tags;
 
 -(void) dealloc {
 	[mbid release];
@@ -21,6 +21,7 @@
 	[date release];
 	tracks = nil;
 	[tracks release];
+	[tags release];
 	[super dealloc];
 }
 @end
