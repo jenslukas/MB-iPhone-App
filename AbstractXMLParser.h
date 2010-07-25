@@ -17,7 +17,7 @@
 - (void) finishedParsing;
 @end
 
-@interface AbstractXMLParser : NSObject {
+@interface AbstractXMLParser : NSObject <NSXMLParserDelegate> {
 	@protected
 	NSMutableString *currentString;
     BOOL storingCharacters;

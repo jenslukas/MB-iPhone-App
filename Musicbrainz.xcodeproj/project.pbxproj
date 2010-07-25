@@ -26,6 +26,7 @@
 		84884D9311E0B7A100E40506 /* ArtistLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84884D9211E0B7A100E40506 /* ArtistLookUpParser.m */; };
 		848AF02811BC5D7E0059FBB8 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 848AF02711BC5D7E0059FBB8 /* WebService.m */; };
 		848AF46411F9A4F200E0244F /* LabelLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 848AF46311F9A4F200E0244F /* LabelLookUpParser.m */; };
+		848AF4CC11F9B64000E0244F /* libPayPalMEP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848AF4CB11F9B64000E0244F /* libPayPalMEP.a */; };
 		848DCA2411BC1C2D00A456EF /* ServiceFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 848DCA2311BC1C2D00A456EF /* ServiceFacade.m */; };
 		848EAD6A11B9478C00357E7D /* StringEditTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EAD6911B9478C00357E7D /* StringEditTableCell.m */; };
 		848EAD8611B94EF100357E7D /* TypeSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EAD8511B94EF100357E7D /* TypeSelectionController.m */; };
@@ -75,6 +76,12 @@
 		848AF02711BC5D7E0059FBB8 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
 		848AF46211F9A4F200E0244F /* LabelLookUpParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelLookUpParser.h; sourceTree = "<group>"; };
 		848AF46311F9A4F200E0244F /* LabelLookUpParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelLookUpParser.m; sourceTree = "<group>"; };
+		848AF4CB11F9B64000E0244F /* libPayPalMEP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMEP.a; sourceTree = "<group>"; };
+		848AF4EA11F9BA2800E0244F /* MEPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPAddress.h; sourceTree = "<group>"; };
+		848AF4EB11F9BA2800E0244F /* MEPAmounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEPAmounts.h; sourceTree = "<group>"; };
+		848AF4EC11F9BA2800E0244F /* PayPal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPal.h; sourceTree = "<group>"; };
+		848AF4ED11F9BA2800E0244F /* PayPalContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalContext.h; sourceTree = "<group>"; };
+		848AF4EE11F9BA2800E0244F /* PayPalMEPPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalMEPPayment.h; sourceTree = "<group>"; };
 		848DCA2211BC1C2D00A456EF /* ServiceFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceFacade.h; path = Classes/ServiceFacade.h; sourceTree = "<group>"; };
 		848DCA2311BC1C2D00A456EF /* ServiceFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceFacade.m; path = Classes/ServiceFacade.m; sourceTree = "<group>"; };
 		848EAD6811B9478C00357E7D /* StringEditTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringEditTableCell.h; sourceTree = "<group>"; };
@@ -108,6 +115,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				848AF4CC11F9B64000E0244F /* libPayPalMEP.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +152,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				848AF4CD11F9B64A00E0244F /* PayPal */,
 				8487BC5711BC6B1400506B80 /* Parser */,
 				848AF02411BC5D5A0059FBB8 /* Service */,
 				84194D1F11AEB27600CCE8B8 /* ViewController */,
@@ -274,6 +283,19 @@
 			name = Service;
 			sourceTree = "<group>";
 		};
+		848AF4CD11F9B64A00E0244F /* PayPal */ = {
+			isa = PBXGroup;
+			children = (
+				848AF4EA11F9BA2800E0244F /* MEPAddress.h */,
+				848AF4EB11F9BA2800E0244F /* MEPAmounts.h */,
+				848AF4EC11F9BA2800E0244F /* PayPal.h */,
+				848AF4ED11F9BA2800E0244F /* PayPalContext.h */,
+				848AF4EE11F9BA2800E0244F /* PayPalMEPPayment.h */,
+				848AF4CB11F9B64000E0244F /* libPayPalMEP.a */,
+			);
+			name = PayPal;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -371,6 +393,10 @@
 				GCC_PREFIX_HEADER = Musicbrainz_Prefix.pch;
 				INFOPLIST_FILE = "Musicbrainz-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = Musicbrainz;
 			};
 			name = Debug;
@@ -383,6 +409,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Musicbrainz_Prefix.pch;
 				INFOPLIST_FILE = "Musicbrainz-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = Musicbrainz;
 			};
 			name = Release;
@@ -396,7 +426,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Debug;
 		};

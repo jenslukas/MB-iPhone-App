@@ -13,6 +13,13 @@
 #import "TypeSelectionController.h"
 #import "ServiceFacade.h"
 
+// PayPal imports
+#import "PayPal.h"
+#import "MEPAmounts.h"
+#import "MEPAddress.h"
+#import "PayPalMEPPayment.h"
+
+
 #import "ReleaseSearchController.h"
 #import "ArtistSearchController.h"
 #import "LabelSearchController.h"
@@ -77,7 +84,7 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 
@@ -89,6 +96,8 @@
 	} else if(section == 1) {
 		numberOfRows = 4;
 	} else if(section == 2) {
+		numberOfRows = 1;
+	} else if(section == 3) {
 		numberOfRows = 1;
 	}
 	return numberOfRows;
@@ -142,10 +151,10 @@
 	}
 	} else if (indexPath.section == 2) {
 		cell.textLabel.text = @"Log In";
+	} else if(indexPath.section == 3) {
+		cell.textLabel.text = @"Donate";
 	}
     
-    // Set up the cell...
-	
     return cell;
 }
 
@@ -201,6 +210,8 @@
 			default:
 				break;
 		}
+	} else if(indexPath.section == 3) {
+			// PayPal integration
 	}
 }
 
@@ -228,6 +239,19 @@
 		height = 130;
 	}
 	return height;
+}
+
+-(void) donate {
+	PayPal *pp = [PayPal getInstance]; 
+	[pp DisableShipping]; 
+	PayPalMEPPayment *payment =[[PayPalMEPPayment alloc] init]; 
+	payment.paymentCurrency=@"USD"; 
+	payment.paymentAmount=[NSString stringWithString:@"10.0"]; 
+	payment.itemDesc = @"Musicbrainz Donation"; 
+	payment.recipient = @"jenslu"; 
+	payment.merchantName = @"Jens Lukas"; 
+	[pp Checkout:payment]; 
+	[payment release];
 }
 
 - (void)dealloc {
