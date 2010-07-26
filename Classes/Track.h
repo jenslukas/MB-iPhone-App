@@ -8,6 +8,7 @@
 //  This program is made available under the terms of the MIT License.
 //
 //	Abstract: Track Entity
+
 #import <Foundation/Foundation.h>
 
 
@@ -17,6 +18,8 @@
 	NSString *title;
 	NSInteger length;
 	NSMutableArray *tags;
+	NSInteger votes;
+	NSNumber *rating;
 }
 
 @property (nonatomic, retain) NSString *mbid;
@@ -24,4 +27,6 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic) NSInteger length;
 @property (nonatomic, retain) NSMutableArray *tags;
+@property (nonatomic) NSInteger votes;
+@property (nonatomic, retain) NSNumber *rating;
 @end

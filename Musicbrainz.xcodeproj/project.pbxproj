@@ -37,6 +37,8 @@
 		848EAD8611B94EF100357E7D /* TypeSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EAD8511B94EF100357E7D /* TypeSelectionController.m */; };
 		848EAD8911B94F7B00357E7D /* Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 848EAD8811B94F7B00357E7D /* Search.m */; };
 		8496C6D311BD10CC007C1F94 /* ReleaseSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496C6D211BD10CC007C1F94 /* ReleaseSearchController.m */; };
+		8497487A11FE1406002E77AD /* TrackLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497487911FE1406002E77AD /* TrackLookUpParser.m */; };
+		8497488C11FE1FF5002E77AD /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497488B11FE1FF5002E77AD /* TrackViewController.m */; };
 		849CC82711D16E4300CC46F7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CC82611D16E4300CC46F7 /* icon.png */; };
 		84A0D89911D8D645009F2888 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0D89811D8D645009F2888 /* Track.m */; };
 		84B505C611D1002000B82131 /* MusicBrainzLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B505C511D1002000B82131 /* MusicBrainzLogo.png */; };
@@ -105,6 +107,10 @@
 		848EAD8811B94F7B00357E7D /* Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Search.m; sourceTree = "<group>"; };
 		8496C6D111BD10CC007C1F94 /* ReleaseSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseSearchController.h; sourceTree = "<group>"; };
 		8496C6D211BD10CC007C1F94 /* ReleaseSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseSearchController.m; sourceTree = "<group>"; };
+		8497487811FE1406002E77AD /* TrackLookUpParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackLookUpParser.h; sourceTree = "<group>"; };
+		8497487911FE1406002E77AD /* TrackLookUpParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackLookUpParser.m; sourceTree = "<group>"; };
+		8497488A11FE1FF5002E77AD /* TrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackViewController.h; sourceTree = "<group>"; };
+		8497488B11FE1FF5002E77AD /* TrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackViewController.m; sourceTree = "<group>"; };
 		849CC82611D16E4300CC46F7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		84A0D89711D8D645009F2888 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		84A0D89811D8D645009F2888 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
@@ -250,6 +256,8 @@
 				8484F7E311FCEB18004A57E9 /* ArtistViewController.m */,
 				847A178B11FCFD07004229BD /* ReleaseViewController.h */,
 				847A178C11FCFD07004229BD /* ReleaseViewController.m */,
+				8497488A11FE1FF5002E77AD /* TrackViewController.h */,
+				8497488B11FE1FF5002E77AD /* TrackViewController.m */,
 			);
 			name = "Detail Pages";
 			sourceTree = "<group>";
@@ -278,6 +286,8 @@
 				848AF46311F9A4F200E0244F /* LabelLookUpParser.m */,
 				84883C2711FDDB57008C18F7 /* ReleaseGroupLookUpParser.h */,
 				84883C2811FDDB57008C18F7 /* ReleaseGroupLookUpParser.m */,
+				8497487811FE1406002E77AD /* TrackLookUpParser.h */,
+				8497487911FE1406002E77AD /* TrackLookUpParser.m */,
 			);
 			name = LookUpParser;
 			sourceTree = "<group>";
@@ -402,6 +412,8 @@
 				847A178D11FCFD07004229BD /* ReleaseViewController.m in Sources */,
 				8487DEEC11FDAE50006DB16C /* ReleaseGroup.m in Sources */,
 				84883C2911FDDB57008C18F7 /* ReleaseGroupLookUpParser.m in Sources */,
+				8497487A11FE1406002E77AD /* TrackLookUpParser.m in Sources */,
+				8497488C11FE1FF5002E77AD /* TrackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

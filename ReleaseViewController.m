@@ -11,6 +11,7 @@
 
 
 #import "ReleaseViewController.h"
+#import "TrackViewController.h"
 #import "Track.h"
 
 
@@ -156,14 +157,18 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+	// show track details
+	Release *release = [self.releaseGroup.releases objectAtIndex:selectedReleaseIndex];
+	Track *track = [release.tracks objectAtIndex:indexPath.row];
+	TrackViewController *trackViewController = [[TrackViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	
+	// get list of release for release group
+	ServiceFacade *serviceFacade = [ServiceFacade alloc];
+	serviceFacade.delegate = trackViewController;
+	[serviceFacade getTrack:track.mbid];
+	
+	[self.navigationController pushViewController:trackViewController animated:YES];
+	[trackViewController release];
 }
 
 

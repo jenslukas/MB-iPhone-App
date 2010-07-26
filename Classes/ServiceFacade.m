@@ -17,6 +17,7 @@
 #import "ArtistSearchParser.h"
 #import "ArtistLookUpParser.h"
 #import "LabelSearchParser.h"
+#import "TrackLookUpParser.h"
 
 @implementation ServiceFacade
 @synthesize delegate, results, searchInfo;
@@ -114,6 +115,26 @@
 	[urlToCall release];
 }
 
+// get Track
+-(void) getTrack:(NSString *)mbid {
+	self.searchInfo = [[Search alloc] init];
+	self.searchInfo.detailSearch = YES;
+	[self.searchInfo setType:TrackType];
+	
+	service = [WebService alloc];
+	service.delegate = self;
+	
+	NSString *urlToCall;
+	urlToCall = @"http://test.musicbrainz.org/ws/2/recording/";
+	urlToCall = [[[urlToCall autorelease] stringByAppendingString:mbid] retain];
+	urlToCall = [[[urlToCall autorelease] stringByAppendingString:@"?inc=tags+ratings"] retain];
+	
+	NSURL *url = [NSURL URLWithString:urlToCall];
+	[service getData:url];
+	[urlToCall release];
+}
+
+
 // called by Web Service when data download finished
 -(void)finishedDownload {
 	if(searchInfo.detailSearch) {
@@ -129,6 +150,9 @@
 				break;
 			case ReleaseGroupType:
 				xmlParser = [ReleaseGroupLookUpParser alloc];
+				break;
+			case TrackType:
+				xmlParser = [TrackLookUpParser alloc];
 				break;
 
 		}
