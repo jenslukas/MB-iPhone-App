@@ -15,14 +15,14 @@
 
 @implementation ArtistLookUpParser
 @synthesize currentArtist;
-@synthesize currentRelease;
+@synthesize currentReleaseGroup;
 
 // Constants for the XML element names used while parsing
 static NSString *ARTIST = @"artist";
 static NSString *NAME = @"name";
-static NSString *RELEASELIST = @"release-list";
-static NSString *RELEASE = @"release";
-static NSString *RELEASETITLE = @"title";
+static NSString *RELEASEGROUPLIST = @"release-group-list";
+static NSString *RELEASEGROUP = @"release-group";
+static NSString *RELEASEGROUPTITLE = @"title";
 static NSString *TAGLIST = @"tag-list";
 static NSString *RATING = @"rating";
 
@@ -45,19 +45,23 @@ static NSString *RATING = @"rating";
 		Artist *artist = [[Artist alloc] init];
 		artist.mbid = [attributeDict valueForKey:@"id"];
 		
+		// initial rating value
+		artist.rating = [[NSNumber alloc] initWithInt:0];
+		artist.votes = 0;
+		
 		self.currentArtist = artist;
 		[artist release];
-	} else if([elementName isEqualToString:NAME]||[elementName isEqualToString:RELEASETITLE]) {
+	} else if([elementName isEqualToString:NAME]||[elementName isEqualToString:RELEASEGROUPTITLE]) {
 		[currentString setString:@""];
 		storingCharacters = YES;
-	} else if([elementName isEqualToString:RELEASELIST]) {
-		self.currentArtist.releases = [NSMutableArray array];		
-	} else if([elementName isEqualToString:RELEASE]) {
-		Release *release = [[Release alloc] init];
-		release.mbid = [attributeDict valueForKey:@"id"];
+	} else if([elementName isEqualToString:RELEASEGROUPLIST]) {
+		self.currentArtist.releaseGroups = [NSMutableArray array];		
+	} else if([elementName isEqualToString:RELEASEGROUP]) {
+		ReleaseGroup *releaseGroup = [[ReleaseGroup alloc] init];
+		releaseGroup.mbid = [attributeDict valueForKey:@"id"];
 		
-		self.currentRelease = release;
-		[release release];
+		self.currentReleaseGroup = releaseGroup;
+		[releaseGroup release];
 	} else if([elementName isEqualToString:TAGLIST]) {
 		parsingArtist = NO;
 		parsingTag = YES;
@@ -79,10 +83,10 @@ static NSString *RATING = @"rating";
 		} else {
 			[self.currentArtist.tags addObject:[NSString stringWithString:self.currentString]];
 		}
-	} else if([elementName isEqualToString:RELEASE]) {
-		[currentArtist.releases addObject:currentRelease];
-	} else if([elementName isEqualToString:RELEASETITLE]) {
-		self.currentRelease.title = [NSString stringWithString:self.currentString];
+	} else if([elementName isEqualToString:RELEASEGROUP]) {
+		[currentArtist.releaseGroups addObject:currentReleaseGroup];
+	} else if([elementName isEqualToString:RELEASEGROUPTITLE]) {
+		self.currentReleaseGroup.title = [NSString stringWithString:self.currentString];
 	} else if([elementName isEqualToString:RATING]) {
 		NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
 		[formatter setNumberStyle:NSNumberFormatterDecimalStyle];

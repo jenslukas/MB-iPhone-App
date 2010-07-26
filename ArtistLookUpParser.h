@@ -12,15 +12,15 @@
 #import <Foundation/Foundation.h>
 #import "AbstractXMLParser.h"
 #import "Artist.h"
-#import "Release.h"
+#import "ReleaseGroup.h"
 
 @interface ArtistLookUpParser : AbstractXMLParser {
 	Artist *currentArtist;
-	Release *currentRelease;
+	ReleaseGroup *currentReleaseGroup;
 	bool parsingArtist;
 	bool parsingTag;
 }
 
 @property (nonatomic, retain) Artist *currentArtist;
-@property (nonatomic, retain) Release *currentRelease;
+@property (nonatomic, retain) ReleaseGroup *currentReleaseGroup;
 @end

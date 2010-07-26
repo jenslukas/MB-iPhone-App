@@ -10,7 +10,7 @@
 //	Abstract: Displays the results of the Artist Search
 
 #import "ArtistSearchController.h"
-#import "ArtistController.h"
+#import "ArtistViewController.h"
 #import "Artist.h"
 
 
@@ -55,7 +55,7 @@
 	// show detail page for selected artist
 	Artist *artist = [artists objectAtIndex:indexPath.row];
 	
-	ArtistController *artistController = [[ArtistController alloc] init];
+	ArtistViewController *artistController = [[ArtistViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	
 	// get details for release
 	ServiceFacade *serviceFacade = [ServiceFacade alloc];

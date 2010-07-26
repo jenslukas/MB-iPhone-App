@@ -47,7 +47,7 @@ static NSString *TAGLIST = @"tag-list";
 		Release *release = [[Release alloc] init];
 		release.mbid = [attributeDict valueForKey:@"id"];
 		release.tracks = [NSMutableArray array];
-		
+
 		self.currentRelease = release;
 		[release release];
 		

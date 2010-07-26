@@ -10,7 +10,7 @@
 //	Abstract: Displays the results of the Release Search
 
 #import "ReleaseSearchController.h"
-#import "ReleaseContoller.h"
+#import "ReleaseViewController.h"
 #import "Release.h"
 
 
@@ -73,7 +73,7 @@
 	// show detail page for selected release
 	Release *release = [releases objectAtIndex:indexPath.row];
 	
-	ReleaseContoller *releaseController = [[ReleaseContoller alloc] init];
+	ReleaseViewController *releaseController = [[ReleaseViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	
 	// get details for release
 	ServiceFacade *serviceFacade = [ServiceFacade alloc];
