@@ -12,12 +12,15 @@
 #import "ReleaseGroup.h"
 
 @implementation ReleaseGroup
-@synthesize title, mbid, type;
+@synthesize title, mbid, type, votes, rating, tags, releases;
 
 -(void) dealloc {
 	[mbid release];
 	[title release];
 	[type release];
+	[rating release];
+	[tags release];
+	[releases release];
 	[super dealloc];
 }
 

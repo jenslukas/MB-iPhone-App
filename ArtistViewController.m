@@ -12,7 +12,7 @@
 
 #import "ArtistViewController.h"
 #import "ReleaseGroup.h"
-
+#import "ReleaseSearchController.h"
 
 @implementation ArtistViewController
 @synthesize artist;
@@ -173,7 +173,7 @@
 	if(section == 0) {
 		sectionTitle = @"General information";
 	} else if(section == 1) {
-		sectionTitle = @"Releases";
+		sectionTitle = @"Release Groups";
 	}
 	return sectionTitle;
 }
@@ -182,14 +182,19 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+	if(indexPath.section == 1) {
+		// show search results page for selected release group
+		ReleaseGroup *releaseGroup = [self.artist.releaseGroups objectAtIndex:indexPath.row];
+		ReleaseSearchController *releaseSearchController = [[ReleaseSearchController alloc] initWithStyle:UITableViewStyleGrouped];
+	
+		// get list of release for release group
+		ServiceFacade *serviceFacade = [ServiceFacade alloc];
+		serviceFacade.delegate = releaseSearchController;
+		[serviceFacade getReleaseGroup:releaseGroup.mbid];
+	
+		[self.navigationController pushViewController:releaseSearchController	animated:YES];
+		[releaseSearchController release];
+	}
 }
 
 

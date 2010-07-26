@@ -15,7 +15,8 @@ typedef enum SearchTypes
 {
 	ArtistType,
 	ReleaseType,
-	LabelType
+	LabelType,
+	ReleaseGroupType
 } SearchTypes;
 
 extern NSString * const SearchTypeToString[];

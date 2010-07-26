@@ -16,8 +16,16 @@
 	NSString *title;
 	NSString *mbid;
 	NSString *type;
+	NSInteger votes;
+	NSNumber *rating;
+	NSMutableArray *tags;
+	NSMutableArray *releases;
 }
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *mbid;
 @property (nonatomic, retain) NSString *type;
+@property (nonatomic) NSInteger votes;
+@property (nonatomic, retain) NSNumber *rating;
+@property (nonatomic, retain) NSMutableArray *tags;
+@property (nonatomic, retain) NSMutableArray *releases;
 @end

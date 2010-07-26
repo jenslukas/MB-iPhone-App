@@ -13,6 +13,7 @@
 #import "ServiceFacade.h"
 #import "ReleaseSearchParser.h"
 #import "ReleaseLookUpParser.h"
+#import "ReleaseGroupLookUpParser.h"
 #import "ArtistSearchParser.h"
 #import "ArtistLookUpParser.h"
 #import "LabelSearchParser.h"
@@ -92,7 +93,25 @@
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	[service getData:url];
 	[urlToCall release];
+}
+
+// get all releases
+-(void) getReleaseGroup:(NSString *)mbid {
+	self.searchInfo = [[Search alloc] init];
+	self.searchInfo.detailSearch = YES;
+	[self.searchInfo setType:ReleaseGroupType];
 	
+	service = [WebService alloc];
+	service.delegate = self;
+	
+	NSString *urlToCall;
+	urlToCall = @"http://test.musicbrainz.org/ws/2/release-group/";
+	urlToCall = [[[urlToCall autorelease] stringByAppendingString:mbid] retain];
+	urlToCall = [[[urlToCall autorelease] stringByAppendingString:@"?inc=releases+tags+ratings"] retain];
+	
+	NSURL *url = [NSURL URLWithString:urlToCall];
+	[service getData:url];
+	[urlToCall release];
 }
 
 // called by Web Service when data download finished
@@ -107,7 +126,11 @@
 				break;
 			case LabelType:
 //				xmlParser = [LabelSearchParser alloc];
-				break;			
+				break;
+			case ReleaseGroupType:
+				xmlParser = [ReleaseGroupLookUpParser alloc];
+				break;
+
 		}
 		xmlParser.delegate = self;
 		[xmlParser parse:service.xmlData];		

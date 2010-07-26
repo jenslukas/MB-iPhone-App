@@ -35,4 +35,5 @@
 -(void) search:(Search *)search;
 -(void) getRelease:(Release *)release;
 -(void) getArtist:(Artist *)artist;
+-(void) getReleaseGroup:(NSString *)mbid;
 @end

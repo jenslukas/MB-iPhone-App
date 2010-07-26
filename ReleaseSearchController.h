@@ -7,15 +7,16 @@
 //
 //  This program is made available under the terms of the MIT License.
 //
-//	Abstract: Displays the results of the Release Search
+//	Abstract: Displays the results of the release search for a Release Group
 
 #import <UIKit/UIKit.h>
 #import	"ServiceFacade.h"
+#import "ReleaseGroup.h"
 
 @interface ReleaseSearchController : UITableViewController <DataCompleteDelegate> {
 	@private
-	NSArray *releases;
+	ReleaseGroup *releaseGroup;
 	ServiceFacade *service;
 }
-@property (nonatomic, retain) NSArray *releases;
+@property (nonatomic, retain) ReleaseGroup *releaseGroup;
 @end

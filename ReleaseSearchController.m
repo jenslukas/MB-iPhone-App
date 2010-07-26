@@ -15,11 +15,12 @@
 
 
 @implementation ReleaseSearchController
-@synthesize releases;
+@synthesize releaseGroup;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self.navigationController setNavigationBarHidden:NO];	
-	self.title = @"Release Search";
+	self.title = @"Releases";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,7 +50,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [releases count];
+    return [self.releaseGroup.releases count];
 }
 
 
@@ -62,7 +63,7 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-    Release *release = [releases objectAtIndex:indexPath.row];
+    Release *release = [self.releaseGroup.releases objectAtIndex:indexPath.row];
 	cell.textLabel.text	= release.title;
 	cell.detailTextLabel.text = release.artist;
     return cell;
@@ -71,7 +72,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	// show detail page for selected release
-	Release *release = [releases objectAtIndex:indexPath.row];
+	Release *release = [self.releaseGroup.releases objectAtIndex:indexPath.row];
 	
 	ReleaseViewController *releaseController = [[ReleaseViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	
@@ -90,7 +91,7 @@
 }
 
 - (void) finishedRequest:(NSArray *) results {
-	self.releases = [NSArray arrayWithArray:results];
+	self.releaseGroup = [results objectAtIndex:0];
 	[self.tableView reloadData];
 }
 
