@@ -69,7 +69,7 @@
 	NSString *urlToCall;
 	urlToCall = @"http://test.musicbrainz.org/ws/2/release/";
 	urlToCall = [[[urlToCall autorelease] stringByAppendingString:release.mbid] retain];
-	urlToCall = [[[urlToCall autorelease] stringByAppendingString:@"?inc=recordings+artists+tags"] retain];
+	urlToCall = [[[urlToCall autorelease] stringByAppendingString:@"?inc=recordings+artists"] retain];
 
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	[service getData:url];

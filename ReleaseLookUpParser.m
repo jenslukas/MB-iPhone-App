@@ -25,7 +25,6 @@ static NSString *TRACK = @"track";
 static NSString *POSITION = @"position";
 static NSString *RECORDING = @"recording";
 static NSString *LENGTH = @"length";
-static NSString *TAGLIST = @"tag-list";
 
 -(void) parse:(NSData *) data {
 	xmlData = data;
@@ -33,7 +32,6 @@ static NSString *TAGLIST = @"tag-list";
     parser.delegate = self;
 	currentString = [NSMutableString string];
 	parsingTrack = NO;
-	parsingTags = NO;
 	[parser parse];
 
 	[parser release];
@@ -63,8 +61,6 @@ static NSString *TAGLIST = @"tag-list";
 		parsingTrack = YES;
 	} else if([elementName isEqualToString:RECORDING]) {
 		currentTrack.mbid = [attributeDict valueForKey:@"id"];
-	} else if([elementName isEqualToString:TAGLIST]) {
-		parsingTags = YES;
 	}
 }
 
@@ -79,11 +75,7 @@ static NSString *TAGLIST = @"tag-list";
 			self.currentRelease.title = [NSString stringWithString:self.currentString];
 		}
 	} else if ([elementName isEqualToString:NAME]) {
-		if(parsingTags) {
-			[self.currentRelease.tags addObject:[NSString stringWithString:self.currentString]];
-		} else {
 			self.currentRelease.artist = [NSString stringWithString:self.currentString];
-		}
 	} else if ([elementName isEqualToString:DATE]) {
 		self.currentRelease.date = [NSString stringWithString:self.currentString];
 	} else if ([elementName isEqualToString:POSITION]) {

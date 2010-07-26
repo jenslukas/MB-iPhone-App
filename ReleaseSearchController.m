@@ -75,6 +75,8 @@
 	Release *release = [self.releaseGroup.releases objectAtIndex:indexPath.row];
 	
 	ReleaseViewController *releaseController = [[ReleaseViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	releaseController.releaseGroup = self.releaseGroup;
+	releaseController.selectedReleaseIndex = indexPath.row;
 	
 	// get details for release
 	ServiceFacade *serviceFacade = [ServiceFacade alloc];

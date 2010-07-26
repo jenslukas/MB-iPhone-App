@@ -20,7 +20,6 @@
 	NSString *artist;
 	NSString *date;
 	NSMutableArray *tracks;
-	NSMutableArray *tags;
 }
 
 @property (nonatomic, retain) NSString *mbid;
@@ -29,5 +28,4 @@
 @property (nonatomic, retain) NSString *artist;
 @property (nonatomic, retain) NSString *date;
 @property (nonatomic, retain) NSMutableArray *tracks;
-@property (nonatomic, retain) NSMutableArray *tags;
 @end

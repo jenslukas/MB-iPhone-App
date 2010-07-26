@@ -20,6 +20,7 @@ static NSString *RELEASE = @"release";
 static NSString *TITLE = @"title";
 static NSString *TAGLIST = @"tag-list";
 static NSString *NAME = @"name";
+static NSString *RATING = @"rating";
 
 -(void) parse:(NSData *) data {
 	xmlData = data;
@@ -44,6 +45,7 @@ static NSString *NAME = @"name";
 		releaseGroupTmp.releases = [NSMutableArray array];
 		releaseGroupTmp.rating = [[NSNumber alloc] initWithInt:0];
 		releaseGroupTmp.votes = 0;
+		releaseGroupTmp.tags = [NSMutableArray array];
 		
 		self.releaseGroup = releaseGroupTmp;
 		[releaseGroupTmp release];		
@@ -59,6 +61,10 @@ static NSString *NAME = @"name";
 		parsingRelease = YES;
 	} else if([elementName isEqualToString:TAGLIST]) {
 		parsingTags = YES;
+	} else if([elementName isEqualToString:RATING]) {
+		self.releaseGroup.votes = [[attributeDict valueForKey:@"votes-count"] intValue];
+		[currentString setString:@""];
+		storingCharacters = YES;		
 	}
 }
 
@@ -75,7 +81,11 @@ static NSString *NAME = @"name";
 			self.releaseGroup.title = [NSString stringWithString:self.currentString];
 		}
 	} else if ([elementName isEqualToString:NAME]) {
-		[self.currentRelease.tags addObject:[NSString stringWithString:self.currentString]];
+		[self.releaseGroup.tags addObject:[NSString stringWithString:self.currentString]];
+	} else if([elementName isEqualToString:RATING]) {
+		NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+		[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+		self.releaseGroup.rating = [formatter numberFromString:self.currentString];
 	}
     storingCharacters = NO;
 }

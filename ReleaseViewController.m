@@ -2,15 +2,20 @@
 //  ReleaseViewController.m
 //  Musicbrainz
 //
-//  Created by Peter Katheter on 7/26/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by Jens Lukas on 7/24/10.
+//  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
+//  This program is made available under the terms of the MIT License.
+//
+//	Abstract: Detail page for release entity
+
 
 #import "ReleaseViewController.h"
+#import "Track.h"
 
 
 @implementation ReleaseViewController
-@synthesize release;
+@synthesize releaseGroup, selectedReleaseIndex;
 
 #pragma mark -
 #pragma mark Initialization
@@ -30,52 +35,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+	parsed = NO;
 	self.title = @"Release";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-*/
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
 
 #pragma mark -
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 1;
+    if(parsed) {
+		if(section == 0) {
+			return 5;
+		} else if(section == 1) {
+			Release *release = [self.releaseGroup.releases objectAtIndex:selectedReleaseIndex];
+			return [release.tracks count];
+		}
+	}
+	return 0;
 }
 
 
@@ -83,76 +66,90 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-	if(indexPath.section == 1) {
+    	
+	// TODO
+	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+
+	Release *release = [self.releaseGroup.releases objectAtIndex:self.selectedReleaseIndex];
+	if(indexPath.section == 0) {
 		switch (indexPath.row) {
 			case 0:
-				cell.detailTextLabel.text = @"Artist";
-				cell.textLabel.text = self.release.artist;
+				cell.detailTextLabel.text = @"Release";
+				cell.textLabel.text = release.title;
 				break;
-			case 1: {
-				UIImage *star = [UIImage imageNamed:@"ratedStar.png"];
-				UIImageView *imageView = [[[UIImageView alloc] initWithImage:star] autorelease];
-				imageView.frame = CGRectMake(0, 0, 50, 50);
-				[cell.contentView addSubview:imageView];
+			case 1:
+				cell.detailTextLabel.text = @"Artist";
+				cell.textLabel.text = release.artist;
+				break;
+			case 2:
+				cell.detailTextLabel.text = @"Date";
+				cell.textLabel.text = release.date;
+				break;
+			case 3: {
+				NSString *tags = [[self.releaseGroup.tags valueForKey:@"description"] componentsJoinedByString:@", "];
+				cell.textLabel.text = tags;
+				cell.detailTextLabel.text = @"Tags";
+				break;
+			}				
+			case 4: {
+				// add stars
+				UIImage *unratedStar = [UIImage imageNamed:@"unratedStar.png"];
+				UIImage *ratedStar = [UIImage imageNamed:@"ratedStar.png"];
+				UIImageView *starView;
+				
+				for (int i = 1; i <= 5; i++) {
+					if(i <= [self.releaseGroup.rating intValue]) {
+						starView = [[[UIImageView alloc] initWithImage:ratedStar] autorelease];						
+					} else {
+						starView = [[[UIImageView alloc] initWithImage:unratedStar] autorelease];												
+					}
+					
+					starView.frame = CGRectMake(5+((i-1)*40), 5, 35, 35);
+					[cell.contentView addSubview:starView];				
+				}
+				
+				NSString *ratingText;
+				ratingText = @"Average rating: ";
+				ratingText = [[[ratingText autorelease] stringByAppendingString:[self.releaseGroup.rating stringValue]] retain];
+				ratingText = [[[ratingText autorelease] stringByAppendingString:@", rated "] retain];
+				ratingText = [[[ratingText autorelease] stringByAppendingString:[NSString stringWithFormat:@"%d", self.releaseGroup.votes]] retain];
+				ratingText = [[[ratingText autorelease] stringByAppendingString:@" times"] retain];
+				
+				// add rating text
+				UILabel *ratingLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, 260, 17)];
+				ratingLabel.text = ratingText;
+				ratingLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
+				[cell.contentView addSubview:ratingLabel];
+				
 				break;
 			}
 			default:
 				break;
 		}
+	} else if(indexPath.section == 1) {
+		Track *track = [release.tracks objectAtIndex:indexPath.row];
+		cell.textLabel.text = track.title;
 	}
 	
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 0)
-        return 180;
-	
-    return 0;
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	// return different height for rating cell otherwise default height
+	if(indexPath.section == 0 && indexPath.row == 4) {
+		return 65;
+	}
+	return 44;
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-	// create and set text for fields
-	// release name field
-	CGRect releaseFrame = CGRectMake(5, 30, 170, 15);
-	releaseNameLabel = [[UILabel alloc] initWithFrame:releaseFrame];
-	releaseNameLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
-	//releaseNameLabel.backgroundColor = [UIColor colorWithRed:(115.0 / 255.0) green:(109.0 / 255.0) blue:(171.0 / 255.0) alpha:1.0];
-	
-	// record field
-	CGRect recordFrame = CGRectMake(5, 65, 180, 15);
-	recordLabel = [[UILabel alloc] initWithFrame:recordFrame];
-	recordLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
-	//recordLabel.backgroundColor = [UIColor colorWithRed:(115.0 / 255.0) green:(109.0 / 255.0) blue:(171.0 / 255.0) alpha:1.0];
-	
-	// date field
-	CGRect dateFrame = CGRectMake(5, 80, 180, 15);
-	dateLabel = [[UILabel alloc] initWithFrame:dateFrame];
-	dateLabel.backgroundColor = [UIColor colorWithRed:(115.0 / 255.0) green:(109.0 / 255.0) blue:(171.0 / 255.0) alpha:1.0];
-	//dateLabel.font = [UIFont fontWithName:@"Helvetica" size:13];
-	
-	// album coverUILabel *dateLabel
-	UIImage *cover = [UIImage imageNamed:@"albumcover.jpg"];
-	UIImageView *imageView = [[[UIImageView alloc] initWithImage:cover] autorelease];
-	imageView.frame = CGRectMake(190, 10, 120, 117);
-	
-  	UIView* customView = [[[UIView alloc] 
-						   initWithFrame:CGRectMake(10.0, 0.0, 300.0, 180.0)]
-						  autorelease];
-  	customView.backgroundColor = [UIColor colorWithRed:.6 green:.6 blue:1 alpha:.9];
-
-	[customView addSubview:imageView];
-	[customView addSubview:dateLabel];
-	[customView addSubview:recordLabel];	
-	[customView addSubview:releaseNameLabel];	
-		
-	return customView;
+-(NSString *)tableView:(UITableView *) tableView titleForHeaderInSection:(NSInteger) section {
+	NSString *sectionTitle;
+	if(section == 0) {
+		sectionTitle = @"General information";
+	} else if(section == 1) {
+		sectionTitle = @"Tracks";
+	}
+	return sectionTitle;
 }
 
 #pragma mark -
@@ -193,13 +190,9 @@
 #pragma mark -
 #pragma mark DataCompleteDelegate implementation
 -(void) finishedRequest:(id)results {
-	self.release = [results objectAtIndex:0];
-	artistNameLabel.text = self.release.artist; 
-	releaseNameLabel.text = self.release.title; 	
-	recordLabel.text = @"RecordLabel"; 	
-	dateLabel.text = self.release.date; 
-	[tracksTable reloadData];	
+	[self.releaseGroup.releases replaceObjectAtIndex:selectedReleaseIndex withObject:[results objectAtIndex:0]];
+	parsed = YES;
+	[self.tableView reloadData];	
 }
 
 @end
-

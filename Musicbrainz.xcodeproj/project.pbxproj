@@ -231,6 +231,7 @@
 		846FE8B411E4478C0061A046 /* Search Result Views */ = {
 			isa = PBXGroup;
 			children = (
+				846FE8B011E447850061A046 /* LabelSearchController.h */,
 				846FE8B111E447850061A046 /* LabelSearchController.m */,
 				8477373B11D4BCE800EA7A9E /* ArtistSearchController.h */,
 				8477373C11D4BCE800EA7A9E /* ArtistSearchController.m */,
@@ -245,7 +246,6 @@
 			children = (
 				8484536611CEF0AC00B8BBC5 /* ReleaseContoller.h */,
 				8484536711CEF0AC00B8BBC5 /* ReleaseContoller.m */,
-				846FE8B011E447850061A046 /* LabelSearchController.h */,
 				8484F7E211FCEB18004A57E9 /* ArtistViewController.h */,
 				8484F7E311FCEB18004A57E9 /* ArtistViewController.m */,
 				847A178B11FCFD07004229BD /* ReleaseViewController.h */,

@@ -192,7 +192,7 @@
 		serviceFacade.delegate = releaseSearchController;
 		[serviceFacade getReleaseGroup:releaseGroup.mbid];
 	
-		[self.navigationController pushViewController:releaseSearchController	animated:YES];
+		[self.navigationController pushViewController:releaseSearchController animated:YES];
 		[releaseSearchController release];
 	}
 }
