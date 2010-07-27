@@ -11,6 +11,7 @@
 
 
 #import "TrackViewController.h"
+#import "TagListViewController.h"
 
 @implementation TrackViewController
 @synthesize track;
@@ -124,6 +125,15 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if(indexPath.section == 0) {
+		if(indexPath.row == 2) {
+			TagListViewController *tagListViewController = [[TagListViewController alloc] initWithStyle:UITableViewStyleGrouped];
+			tagListViewController.entity = self.track;
+			
+			[self.navigationController pushViewController:tagListViewController animated:YES];
+			[tagListViewController release];
+		}
+	}
 }
 
 

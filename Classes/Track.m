@@ -14,4 +14,9 @@
 
 @implementation Track
 @synthesize mbid, position, title, length, tags, votes, rating;
+
+-(NSString *) getMBID {
+	return mbid;
+}
+
 @end

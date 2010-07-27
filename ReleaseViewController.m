@@ -13,7 +13,7 @@
 #import "ReleaseViewController.h"
 #import "TrackViewController.h"
 #import "Track.h"
-
+#import	"TagListViewController.h"
 
 @implementation ReleaseViewController
 @synthesize releaseGroup, selectedReleaseIndex;
@@ -157,18 +157,29 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	// show track details
-	Release *release = [self.releaseGroup.releases objectAtIndex:selectedReleaseIndex];
-	Track *track = [release.tracks objectAtIndex:indexPath.row];
-	TrackViewController *trackViewController = [[TrackViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	if(indexPath.section == 0) {
+		if(indexPath.row == 1) {
+			TagListViewController *tagListViewController = [[TagListViewController alloc] initWithStyle:UITableViewStyleGrouped];
+			tagListViewController.entity = self.releaseGroup;
+			
+			[self.navigationController pushViewController:tagListViewController animated:YES];
+			[tagListViewController release];
+		}
+		
+	} else if(indexPath.section == 1) {
+		// show track details
+		Release *release = [self.releaseGroup.releases objectAtIndex:selectedReleaseIndex];
+		Track *track = [release.tracks objectAtIndex:indexPath.row];
+		TrackViewController *trackViewController = [[TrackViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	
-	// get list of release for release group
-	ServiceFacade *serviceFacade = [ServiceFacade alloc];
-	serviceFacade.delegate = trackViewController;
-	[serviceFacade getTrack:track.mbid];
+		// get list of release for release group	
+		ServiceFacade *serviceFacade = [ServiceFacade alloc];
+		serviceFacade.delegate = trackViewController;
+		[serviceFacade getTrack:track.mbid];
 	
-	[self.navigationController pushViewController:trackViewController animated:YES];
-	[trackViewController release];
+		[self.navigationController pushViewController:trackViewController animated:YES];
+		[trackViewController release];
+	}
 }
 
 

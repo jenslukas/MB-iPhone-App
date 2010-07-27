@@ -10,14 +10,13 @@
 //	Abstract: Track Entity
 
 #import <Foundation/Foundation.h>
+#import "TaggedEntity.h"
 
-
-@interface Track : NSObject {
+@interface Track : NSObject <TaggedEntity> {
 	NSString *mbid;
 	NSInteger position;
 	NSString *title;
 	NSInteger length;
-	NSMutableArray *tags;
 	NSInteger votes;
 	NSNumber *rating;
 }
@@ -26,7 +25,7 @@
 @property (nonatomic) NSInteger position;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic) NSInteger length;
-@property (nonatomic, retain) NSMutableArray *tags;
 @property (nonatomic) NSInteger votes;
 @property (nonatomic, retain) NSNumber *rating;
+-(NSString *) getMBID;
 @end

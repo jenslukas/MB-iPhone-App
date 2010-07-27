@@ -14,4 +14,8 @@
 
 @implementation Artist
 @synthesize mbid, name, score, rating, releaseGroups, tags, votes;
+
+-(NSString *)getMBID {
+	return mbid;
+}
 @end

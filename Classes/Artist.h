@@ -10,15 +10,15 @@
 //	Abstract: Artist entity
 
 #import <Foundation/Foundation.h>
+#import "TaggedEntity.h"
 
-@interface Artist : NSObject {
+@interface Artist : NSObject <TaggedEntity> {
 	NSString *mbid;
 	NSString *name;	
 	NSInteger score;
 	NSNumber *rating;
 	NSInteger votes;
 	NSMutableArray *releaseGroups;
-	NSMutableArray *tags;
 }
 
 @property (nonatomic, retain) NSString *mbid;
@@ -26,6 +26,7 @@
 @property (nonatomic) NSInteger score;
 @property (nonatomic, retain) NSNumber *rating;
 @property (nonatomic, retain) NSMutableArray *releaseGroups;
-@property (nonatomic, retain) NSMutableArray *tags;
 @property (nonatomic) NSInteger votes;
+
+-(NSString *)getMBID;
 @end

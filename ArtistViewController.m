@@ -13,6 +13,7 @@
 #import "ArtistViewController.h"
 #import "ReleaseGroup.h"
 #import "ReleaseSearchController.h"
+#import "TagListViewController.h"
 
 @implementation ArtistViewController
 @synthesize artist;
@@ -182,7 +183,15 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if(indexPath.section == 1) {
+	if(indexPath.section == 0) {
+		if(indexPath.row == 1) {
+			TagListViewController *tagListViewController = [[TagListViewController alloc] initWithStyle:UITableViewStyleGrouped];
+			tagListViewController.entity = self.artist;
+			
+			[self.navigationController pushViewController:tagListViewController animated:YES];
+			[tagListViewController release];
+		}
+	} else if(indexPath.section == 1) {
 		// show search results page for selected release group
 		ReleaseGroup *releaseGroup = [self.artist.releaseGroups objectAtIndex:indexPath.row];
 		ReleaseSearchController *releaseSearchController = [[ReleaseSearchController alloc] initWithStyle:UITableViewStyleGrouped];

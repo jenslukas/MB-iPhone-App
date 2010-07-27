@@ -20,7 +20,7 @@
 #import "PayPalMEPPayment.h"
 
 
-#import "ReleaseSearchController.h"
+#import "ReleaseGroupSearchController.h"
 #import "ArtistSearchController.h"
 #import "LabelSearchController.h"
 
@@ -190,8 +190,8 @@
 					case ArtistType:
 						searchController = [[ArtistSearchController alloc] initWithStyle:UITableViewStyleGrouped];
 						break;
-					case ReleaseType:
-						searchController = [[ReleaseSearchController alloc] initWithStyle:UITableViewStyleGrouped];
+					case ReleaseGroupType:
+						searchController = [[ReleaseGroupSearchController alloc] initWithStyle:UITableViewStyleGrouped];
 						break;
 					case LabelType:
 						searchController = [[LabelSearchController alloc] initWithStyle:UITableViewStyleGrouped];

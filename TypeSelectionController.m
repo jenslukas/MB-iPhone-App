@@ -62,7 +62,7 @@
 			type = ArtistType;
 			break;
 		case 1:
-			type = ReleaseType;
+			type = ReleaseGroupType;
 			break;
 		case 2:
 			type = LabelType;

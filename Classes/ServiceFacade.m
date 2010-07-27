@@ -41,6 +41,10 @@
 			urlToCall = @"http://test.musicbrainz.org/ws/2/artist?query=";
 			urlToCall = [[[urlToCall autorelease] stringByAppendingString:encodedQuery] retain];
 			break;
+		case ReleaseGroupType:
+			urlToCall = @"http://test.musicbrainz.org/ws/2/release-group?query=";
+			urlToCall = [[[urlToCall autorelease] stringByAppendingString:encodedQuery] retain];
+			break;
 		case ReleaseType:
 			urlToCall = @"http://test.musicbrainz.org/ws/2/release?query=";
 			//urlToCall = [urlToCall stringByAppendingString:encodedQuery];
@@ -163,6 +167,10 @@
 		switch([searchInfo getType]) {
 			case ArtistType:
 				xmlParser = [ArtistSearchParser alloc];
+				break;
+			case ReleaseGroupType:
+				// TODO
+				//xmlParser = [ReleaseGroupSearchParser alloc];
 				break;
 			case ReleaseType:
 				xmlParser = [ReleaseSearchParser alloc];

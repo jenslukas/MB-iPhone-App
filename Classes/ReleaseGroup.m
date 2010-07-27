@@ -14,8 +14,12 @@
 @implementation ReleaseGroup
 @synthesize title, mbid, type, votes, rating, tags, releases;
 
+-(NSString *) getMBID {
+	return mbid;
+}
+
 -(void) dealloc {
-	[mbid release];
+	[mbid release];	
 	[title release];
 	[type release];
 	[rating release];
