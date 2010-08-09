@@ -19,9 +19,6 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-	// init paypal
-	[NSThread detachNewThreadSelector:@selector(initializePayPalMEP) toTarget:self withObject:nil];
-	
 	
 	// TODO clean up
 	MainMenuController *mainMenu = [[MainMenuController alloc] initWithStyle:UITableViewStyleGrouped];
@@ -39,12 +36,6 @@
 	[window addSubview:[navController view]];
     [window makeKeyAndVisible];
 }
-
--(void)initializePayPalMEP {
-	// init paypal library in sandbox mode
-	[PayPal initializeWithAppID:@"APP-80W284485P519543T" forEnvironment:ENV_SANDBOX];
-}
-
 
 - (void)dealloc {
 	[navController release];

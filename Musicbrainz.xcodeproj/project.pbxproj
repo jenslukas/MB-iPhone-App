@@ -41,6 +41,7 @@
 		8497487A11FE1406002E77AD /* TrackLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497487911FE1406002E77AD /* TrackLookUpParser.m */; };
 		8497488C11FE1FF5002E77AD /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497488B11FE1FF5002E77AD /* TrackViewController.m */; };
 		849789A712101DFA00E74D6F /* AddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849789A612101DFA00E74D6F /* AddTagViewController.m */; };
+		84978A361210574300E74D6F /* DonateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84978A351210574300E74D6F /* DonateViewController.m */; };
 		849AC56E11FEB81200440656 /* ReleaseGroupSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849AC56D11FEB81200440656 /* ReleaseGroupSearchController.m */; };
 		849AC57C11FEBBA200440656 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849AC57B11FEBBA200440656 /* TagListViewController.m */; };
 		849CC82711D16E4300CC46F7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CC82611D16E4300CC46F7 /* icon.png */; };
@@ -120,6 +121,8 @@
 		8497488B11FE1FF5002E77AD /* TrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackViewController.m; sourceTree = "<group>"; };
 		849789A512101DFA00E74D6F /* AddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTagViewController.h; sourceTree = "<group>"; };
 		849789A612101DFA00E74D6F /* AddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTagViewController.m; sourceTree = "<group>"; };
+		84978A341210574300E74D6F /* DonateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonateViewController.h; sourceTree = "<group>"; };
+		84978A351210574300E74D6F /* DonateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonateViewController.m; sourceTree = "<group>"; };
 		849AC56C11FEB81200440656 /* ReleaseGroupSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseGroupSearchController.h; sourceTree = "<group>"; };
 		849AC56D11FEB81200440656 /* ReleaseGroupSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseGroupSearchController.m; sourceTree = "<group>"; };
 		849AC57A11FEBBA200440656 /* TagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListViewController.h; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 				84194D2211AEB2C700CCE8B8 /* MainMenuController.m */,
 				848EAD8411B94EF100357E7D /* TypeSelectionController.h */,
 				848EAD8511B94EF100357E7D /* TypeSelectionController.m */,
+				84978A341210574300E74D6F /* DonateViewController.h */,
+				84978A351210574300E74D6F /* DonateViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -454,6 +459,7 @@
 				84B5C05F11FF0DEE00CA3198 /* ReleaseGroupSearchParser.m in Sources */,
 				84898AC311FF3B74002E09C2 /* LabelViewController.m in Sources */,
 				849789A712101DFA00E74D6F /* AddTagViewController.m in Sources */,
+				84978A361210574300E74D6F /* DonateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

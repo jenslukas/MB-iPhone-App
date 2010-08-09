@@ -10,8 +10,6 @@
 //	Abstract: Applications entry point
 
 #import <UIKit/UIKit.h>
-#import	"PayPal.h"
-#import "PayPalContext.h"
 
 @interface MusicbrainzAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
@@ -21,6 +19,5 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) UINavigationController *navController;
 
--(void)initializePayPalMEP;
 @end
 

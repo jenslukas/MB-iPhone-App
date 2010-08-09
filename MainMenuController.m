@@ -11,13 +11,8 @@
 
 #import "MainMenuController.h"
 #import "TypeSelectionController.h"
+#import "DonateViewController.h"
 #import "ServiceFacade.h"
-
-// PayPal imports
-#import "PayPal.h"
-#import "MEPAmounts.h"
-#import "MEPAddress.h"
-#import "PayPalMEPPayment.h"
 
 
 #import "ReleaseGroupSearchController.h"
@@ -211,7 +206,8 @@
 				break;
 		}
 	} else if(indexPath.section == 3) {
-			// PayPal integration
+		DonateViewController *donateViewController = [[DonateViewController alloc] initWithStyle:UITableViewStyleGrouped];
+		[self.navigationController pushViewController:donateViewController animated:YES];
 	}
 }
 
@@ -239,19 +235,6 @@
 		height = 130;
 	}
 	return height;
-}
-
--(void) donate {
-	PayPal *pp = [PayPal getInstance]; 
-	[pp DisableShipping]; 
-	PayPalMEPPayment *payment =[[PayPalMEPPayment alloc] init]; 
-	payment.paymentCurrency=@"USD"; 
-	payment.paymentAmount=[NSString stringWithString:@"10.0"]; 
-	payment.itemDesc = @"Musicbrainz Donation"; 
-	payment.recipient = @"jenslu"; 
-	payment.merchantName = @"Jens Lukas"; 
-	[pp Checkout:payment]; 
-	[payment release];
 }
 
 - (void)dealloc {
