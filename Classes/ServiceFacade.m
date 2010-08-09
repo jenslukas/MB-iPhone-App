@@ -20,6 +20,7 @@
 #import "LabelLookUpParser.h"
 #import "TrackLookUpParser.h"
 #import "ReleaseGroupSearchParser.h"
+#import "TaggedEntity.h"
 
 @implementation ServiceFacade
 @synthesize delegate, results, searchInfo;
@@ -186,6 +187,36 @@
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	
 	NSString *xml = [NSString stringWithFormat:@"<metadata xmlns=\"http://musicbrainz.org/ns/mmd-2.0#\"><artist-list><artist id=\"%@\"><user-tag-list><user-tag><name>%@</name></user-tag></user-tag-list></artist></artist-list></metadata>", mbid, tag];
+	NSLog(@"%@", xml);
+	[service sendData:url withData:xml];
+	
+	[urlToCall release];
+	//[xml release];
+}	
+
+// rate
+-(void) tagEntity:(id)entity withTag:(NSString *)tag {
+	// get type of entity
+	NSString *xmlEntityType;
+	if([entity isKindOfClass:[Artist class]]) {
+		xmlEntityType = @"artist";
+	} else if ([entity isKindOfClass:[Label class]]) {
+		xmlEntityType = @"label";
+	} else if([entity isKindOfClass:[Track class]]) {
+		xmlEntityType = @"recording";
+	} else if([entity isKindOfClass:[ReleaseGroup class]]) {
+		xmlEntityType = @"release-group";
+	}
+
+	
+	service = [WebService alloc];
+	service.delegate = self;
+	NSString *urlToCall;
+	urlToCall = @"http://test.musicbrainz.org/ws/2/tag?client=iphone-0.7";
+	
+	NSURL *url = [NSURL URLWithString:urlToCall];
+	
+	NSString *xml = [NSString stringWithFormat:@"<metadata xmlns=\"http://musicbrainz.org/ns/mmd-2.0#\"><%@-list><%@ id=\"%@\"><user-tag-list><user-tag><name>%@</name></user-tag></user-tag-list></%@></%@-list></metadata>", xmlEntityType, xmlEntityType, [entity getMBID], tag, xmlEntityType, xmlEntityType];
 	NSLog(@"%@", xml);
 	[service sendData:url withData:xml];
 	

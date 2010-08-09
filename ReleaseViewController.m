@@ -170,6 +170,12 @@
 			
 			[self.navigationController pushViewController:tagListViewController animated:YES];
 			[tagListViewController release];
+		} else if (indexPath.row == 3) {
+			TagListViewController *tagListViewController = [[TagListViewController alloc] initWithStyle:UITableViewStyleGrouped];
+			tagListViewController.entity = self.releaseGroup;
+			
+			[self.navigationController pushViewController:tagListViewController animated:YES];
+			[tagListViewController release];			
 		} else if(indexPath.row == 4) {
 			Release *release = [self.releaseGroup.releases objectAtIndex:selectedReleaseIndex];
 			

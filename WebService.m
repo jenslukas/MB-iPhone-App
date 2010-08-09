@@ -65,7 +65,7 @@
 
 -(void) connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
 	if([challenge previousFailureCount] == 0) {
-		[[challenge sender] useCredential:[NSURLCredential credentialWithUser:@"brainpimp" password:@"" persistence:NSURLCredentialPersistenceForSession] forAuthenticationChallenge:challenge];
+		[[challenge sender] useCredential:[NSURLCredential credentialWithUser:@"brainpimp" password:@"conair148361" persistence:NSURLCredentialPersistenceForSession] forAuthenticationChallenge:challenge];
 	} else {
 		[[challenge sender] cancelAuthenticationChallenge:challenge];
 	}

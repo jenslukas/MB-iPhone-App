@@ -59,7 +59,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if(indexPath.row == 1) {
 		ServiceFacade *serviceFacade = [ServiceFacade alloc];
-		[serviceFacade tagArtist:[self.entity getMBID] withTag:[editTableCell getText]];
+		[serviceFacade tagEntity:self.entity withTag:[editTableCell getText]];
 	}
 }
 
