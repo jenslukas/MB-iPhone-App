@@ -27,6 +27,4 @@
 @property (nonatomic, retain) NSNumber *rating;
 @property (nonatomic, retain) NSMutableArray *releaseGroups;
 @property (nonatomic) NSInteger votes;
-
--(NSString *)getMBID;
 @end

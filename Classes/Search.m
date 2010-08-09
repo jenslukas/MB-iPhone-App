@@ -14,7 +14,9 @@
 NSString * const SearchTypeToString[] = {
 	@"Artist",
 	@"Release",
-	@"Label"
+	@"Label",
+	@"Release group",
+	@"Track"
 };
 
 @implementation Search

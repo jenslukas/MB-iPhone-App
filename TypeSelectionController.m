@@ -92,7 +92,19 @@
 	[[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
 	
 	// set type and return to search view
-	[search setType:indexPath.row];
+	switch (indexPath.row) {
+		case 0:
+			[search setType:ArtistType];
+			break;
+		case 1:
+			[search setType:ReleaseGroupType];
+			break;
+		case 2:
+			[search setType:LabelType];
+			break;			
+		default:
+			break;
+	}
     [self.navigationController popViewControllerAnimated:YES];
 }
 

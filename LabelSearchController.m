@@ -10,9 +10,11 @@
 //	Abstract: Displays results of label search
 
 #import "LabelSearchController.h"
+#import	"LabelViewController.h"
 #import "Label.h"
 
 @implementation LabelSearchController
+@synthesize labels;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,14 +51,22 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+	// show detail page for selected label
+	Label *label = [labels objectAtIndex:indexPath.row];
+	
+	LabelViewController *labelController = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	
+	// get details for label
+	ServiceFacade *serviceFacade = [ServiceFacade alloc];
+	serviceFacade.delegate = labelController;
+	[serviceFacade getLabel:label.mbid];
+	
+	[self.navigationController pushViewController:labelController	animated:YES];
+	[labelController release];	
 }
 
 - (void) finishedRequest:(NSArray *) results {
-	labels = results;
+	self.labels = [NSArray arrayWithArray:results];
 	[self.tableView reloadData];
 }
 

@@ -10,7 +10,7 @@
 //	Abstract: Release entity
 
 #import <Foundation/Foundation.h>
-
+#import "Label.h"
 
 @interface Release : NSObject {
 	@private
@@ -20,6 +20,7 @@
 	NSString *artist;
 	NSString *date;
 	NSMutableArray *tracks;
+	Label *label;
 }
 
 @property (nonatomic, retain) NSString *mbid;
@@ -28,4 +29,5 @@
 @property (nonatomic, retain) NSString *artist;
 @property (nonatomic, retain) NSString *date;
 @property (nonatomic, retain) NSMutableArray *tracks;
+@property (nonatomic, retain) Label *label;
 @end

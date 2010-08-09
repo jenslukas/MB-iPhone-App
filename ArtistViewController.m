@@ -190,6 +190,9 @@
 			
 			[self.navigationController pushViewController:tagListViewController animated:YES];
 			[tagListViewController release];
+		} else if(indexPath.row == 2) {
+			ServiceFacade *serviceFacade = [ServiceFacade alloc];
+			[serviceFacade rateArtist:self.artist.mbid withRating:100];
 		}
 	} else if(indexPath.section == 1) {
 		// show search results page for selected release group

@@ -29,6 +29,7 @@
 		8487DEEC11FDAE50006DB16C /* ReleaseGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487DEEB11FDAE50006DB16C /* ReleaseGroup.m */; };
 		84883C2911FDDB57008C18F7 /* ReleaseGroupLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84883C2811FDDB57008C18F7 /* ReleaseGroupLookUpParser.m */; };
 		84884D9311E0B7A100E40506 /* ArtistLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84884D9211E0B7A100E40506 /* ArtistLookUpParser.m */; };
+		84898AC311FF3B74002E09C2 /* LabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84898AC211FF3B74002E09C2 /* LabelViewController.m */; };
 		848AF02811BC5D7E0059FBB8 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 848AF02711BC5D7E0059FBB8 /* WebService.m */; };
 		848AF46411F9A4F200E0244F /* LabelLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 848AF46311F9A4F200E0244F /* LabelLookUpParser.m */; };
 		848AF4CC11F9B64000E0244F /* libPayPalMEP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 848AF4CB11F9B64000E0244F /* libPayPalMEP.a */; };
@@ -39,6 +40,7 @@
 		8496C6D311BD10CC007C1F94 /* ReleaseSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496C6D211BD10CC007C1F94 /* ReleaseSearchController.m */; };
 		8497487A11FE1406002E77AD /* TrackLookUpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497487911FE1406002E77AD /* TrackLookUpParser.m */; };
 		8497488C11FE1FF5002E77AD /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497488B11FE1FF5002E77AD /* TrackViewController.m */; };
+		849789A712101DFA00E74D6F /* AddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849789A612101DFA00E74D6F /* AddTagViewController.m */; };
 		849AC56E11FEB81200440656 /* ReleaseGroupSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849AC56D11FEB81200440656 /* ReleaseGroupSearchController.m */; };
 		849AC57C11FEBBA200440656 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849AC57B11FEBBA200440656 /* TagListViewController.m */; };
 		849CC82711D16E4300CC46F7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CC82611D16E4300CC46F7 /* icon.png */; };
@@ -48,6 +50,7 @@
 		84B5063711D10ADB00B82131 /* ArtistSearchParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5063611D10ADB00B82131 /* ArtistSearchParser.m */; };
 		84B5064A11D10EB800B82131 /* LabelSearchParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5064911D10EB800B82131 /* LabelSearchParser.m */; };
 		84B5064D11D10F1900B82131 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5064C11D10F1900B82131 /* Label.m */; };
+		84B5C05F11FF0DEE00CA3198 /* ReleaseGroupSearchParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5C05E11FF0DEE00CA3198 /* ReleaseGroupSearchParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +92,8 @@
 		84883C2811FDDB57008C18F7 /* ReleaseGroupLookUpParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseGroupLookUpParser.m; sourceTree = "<group>"; };
 		84884D9111E0B7A100E40506 /* ArtistLookUpParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistLookUpParser.h; sourceTree = "<group>"; };
 		84884D9211E0B7A100E40506 /* ArtistLookUpParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistLookUpParser.m; sourceTree = "<group>"; };
+		84898AC111FF3B74002E09C2 /* LabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelViewController.h; sourceTree = "<group>"; };
+		84898AC211FF3B74002E09C2 /* LabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelViewController.m; sourceTree = "<group>"; };
 		848AF02611BC5D7E0059FBB8 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
 		848AF02711BC5D7E0059FBB8 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
 		848AF46211F9A4F200E0244F /* LabelLookUpParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelLookUpParser.h; sourceTree = "<group>"; };
@@ -113,6 +118,8 @@
 		8497487911FE1406002E77AD /* TrackLookUpParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackLookUpParser.m; sourceTree = "<group>"; };
 		8497488A11FE1FF5002E77AD /* TrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackViewController.h; sourceTree = "<group>"; };
 		8497488B11FE1FF5002E77AD /* TrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackViewController.m; sourceTree = "<group>"; };
+		849789A512101DFA00E74D6F /* AddTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTagViewController.h; sourceTree = "<group>"; };
+		849789A612101DFA00E74D6F /* AddTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTagViewController.m; sourceTree = "<group>"; };
 		849AC56C11FEB81200440656 /* ReleaseGroupSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseGroupSearchController.h; sourceTree = "<group>"; };
 		849AC56D11FEB81200440656 /* ReleaseGroupSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseGroupSearchController.m; sourceTree = "<group>"; };
 		849AC57A11FEBBA200440656 /* TagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListViewController.h; sourceTree = "<group>"; };
@@ -130,6 +137,8 @@
 		84B5064911D10EB800B82131 /* LabelSearchParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelSearchParser.m; sourceTree = "<group>"; };
 		84B5064B11D10F1900B82131 /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
 		84B5064C11D10F1900B82131 /* Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Label.m; sourceTree = "<group>"; };
+		84B5C05D11FF0DEE00CA3198 /* ReleaseGroupSearchParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseGroupSearchParser.h; sourceTree = "<group>"; };
+		84B5C05E11FF0DEE00CA3198 /* ReleaseGroupSearchParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseGroupSearchParser.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Musicbrainz-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Musicbrainz-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -269,6 +278,8 @@
 				847A178C11FCFD07004229BD /* ReleaseViewController.m */,
 				8497488A11FE1FF5002E77AD /* TrackViewController.h */,
 				8497488B11FE1FF5002E77AD /* TrackViewController.m */,
+				84898AC111FF3B74002E09C2 /* LabelViewController.h */,
+				84898AC211FF3B74002E09C2 /* LabelViewController.m */,
 			);
 			name = "Detail Pages";
 			sourceTree = "<group>";
@@ -282,6 +293,8 @@
 				84B5063611D10ADB00B82131 /* ArtistSearchParser.m */,
 				8487BC5F11BC6C7600506B80 /* ReleaseSearchParser.h */,
 				8487BC6011BC6C7600506B80 /* ReleaseSearchParser.m */,
+				84B5C05D11FF0DEE00CA3198 /* ReleaseGroupSearchParser.h */,
+				84B5C05E11FF0DEE00CA3198 /* ReleaseGroupSearchParser.m */,
 			);
 			name = QueryParser;
 			sourceTree = "<group>";
@@ -343,6 +356,8 @@
 			children = (
 				849AC57A11FEBBA200440656 /* TagListViewController.h */,
 				849AC57B11FEBBA200440656 /* TagListViewController.m */,
+				849789A512101DFA00E74D6F /* AddTagViewController.h */,
+				849789A612101DFA00E74D6F /* AddTagViewController.m */,
 			);
 			name = "Detail Subpages";
 			sourceTree = "<group>";
@@ -436,6 +451,9 @@
 				8497488C11FE1FF5002E77AD /* TrackViewController.m in Sources */,
 				849AC56E11FEB81200440656 /* ReleaseGroupSearchController.m in Sources */,
 				849AC57C11FEBBA200440656 /* TagListViewController.m in Sources */,
+				84B5C05F11FF0DEE00CA3198 /* ReleaseGroupSearchParser.m in Sources */,
+				84898AC311FF3B74002E09C2 /* LabelViewController.m in Sources */,
+				849789A712101DFA00E74D6F /* AddTagViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

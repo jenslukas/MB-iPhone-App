@@ -14,6 +14,7 @@
 #import "TrackViewController.h"
 #import "Track.h"
 #import	"TagListViewController.h"
+#import "LabelViewController.h"release.label.mbid
 
 @implementation ReleaseViewController
 @synthesize releaseGroup, selectedReleaseIndex;
@@ -53,7 +54,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(parsed) {
 		if(section == 0) {
-			return 5;
+			return 6;
 		} else if(section == 1) {
 			Release *release = [self.releaseGroup.releases objectAtIndex:selectedReleaseIndex];
 			return [release.tracks count];
@@ -91,8 +92,13 @@
 				cell.textLabel.text = tags;
 				cell.detailTextLabel.text = @"Tags";
 				break;
-			}				
+			}		
 			case 4: {
+				cell.detailTextLabel.text = @"Label";
+				cell.textLabel.text = release.label.name;
+				break;
+			}
+			case 5: {
 				// add stars
 				UIImage *unratedStar = [UIImage imageNamed:@"unratedStar.png"];
 				UIImage *ratedStar = [UIImage imageNamed:@"ratedStar.png"];
@@ -137,7 +143,7 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	// return different height for rating cell otherwise default height
-	if(indexPath.section == 0 && indexPath.row == 4) {
+	if(indexPath.section == 0 && indexPath.row == 5) {
 		return 65;
 	}
 	return 44;
@@ -164,6 +170,18 @@
 			
 			[self.navigationController pushViewController:tagListViewController animated:YES];
 			[tagListViewController release];
+		} else if(indexPath.row == 4) {
+			Release *release = [self.releaseGroup.releases objectAtIndex:selectedReleaseIndex];
+			
+			LabelViewController *labelViewController = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
+
+			// get label	
+			ServiceFacade *serviceFacade = [ServiceFacade alloc];
+			serviceFacade.delegate = labelViewController;
+			[serviceFacade getLabel:release.label.mbid];
+			
+			[self.navigationController pushViewController:labelViewController animated:YES];
+			[labelViewController release];
 		}
 		
 	} else if(indexPath.section == 1) {

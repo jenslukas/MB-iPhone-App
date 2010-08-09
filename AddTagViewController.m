@@ -1,34 +1,27 @@
 //
-//  TagListViewController.h
+//  AddTagViewController.h
 //  Musicbrainz
 //
-//  Created by Jens Lukas on 7/27/10.
+//  Created by Jens Lukas on 8/6/10.
 //  Copyright 2010 Jens Lukas <contact@jenslukas.com>
 //
 //  This program is made available under the terms of the MIT License.
 //
-//	Abstract: Show all tags of entityy
+//	Abstract: View to add tags
 
-#import "TagListViewController.h"
 #import "AddTagViewController.h"
+#import "ServiceFacade.h"
 
-
-@implementation TagListViewController
-@synthesize entity;
+@implementation AddTagViewController
+@synthesize entity, editTableCell;
 
 #pragma mark -
 #pragma mark View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-	self.title = @"Tags";
-	// add "add button"
-	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addTag)];
-	self.navigationItem.rightBarButtonItem = addButton;
-	[addButton release];
+	self.title = @"Add tag"; 
 }
-
 
 #pragma mark -
 #pragma mark Table view data source
@@ -40,7 +33,8 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [entity.tags count];
+    // Return the number of rows in the section.
+    return 2;
 }
 
 
@@ -48,22 +42,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-	
-	cell.textLabel.text = [entity.tags objectAtIndex:indexPath.row];
-	
-    return cell;
+    if(indexPath.row == 0) {
+		editTableCell = [[[StringEditTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		[editTableCell setText:@"Tag"];
+		return editTableCell;
+	} else {
+		UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddTagButtonCell"] autorelease];
+		cell.textLabel.text = @"Add tag";
+		return cell;
+	}
 }
 
 #pragma mark -
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Nothing to do...
+	if(indexPath.row == 1) {
+		ServiceFacade *serviceFacade = [ServiceFacade alloc];
+		[serviceFacade tagArtist:[self.entity getMBID] withTag:[editTableCell getText]];
+	}
 }
 
 
@@ -87,13 +84,6 @@
     [super dealloc];
 }
 
-#pragma mark -
-#pragma mark Custom methods
 
--(void) addTag {
-	AddTagViewController *addTagViewController = [[AddTagViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	addTagViewController.entity = self.entity;
-	[self.navigationController pushViewController:addTagViewController animated:YES];
-}
 @end
 

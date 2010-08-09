@@ -37,4 +37,5 @@
 -(void) getArtist:(Artist *)artist;
 -(void) getReleaseGroup:(NSString *)mbid;
 -(void) getTrack:(NSString *)mbid;
+-(void) getLabel:(NSString *)mbid;
 @end

@@ -58,9 +58,11 @@ static NSString *TAGLIST = @"tag-list";
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-	if ([elementName isEqualToString:RELEASE]) {
-		[results addObject:self.currentRelease];
-		[super finished];
+	if([elementName isEqualToString:LABEL]) {
+		[results addObject:self.currentLabel];
+		[super finished];		
+	} else if ([elementName isEqualToString:RELEASE]) {
+		[self.currentLabel.releases addObject:self.currentRelease];
 	} else if ([elementName isEqualToString:NAME]) {
 		if(parsingTags) {
 			[self.currentLabel.tags addObject:[NSString stringWithString:self.currentString]];

@@ -17,5 +17,6 @@
 	NSArray *labels;
 	ServiceFacade *service;
 }
+@property (nonatomic, retain) NSArray *labels;
 @end
 

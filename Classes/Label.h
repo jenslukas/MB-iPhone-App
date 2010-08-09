@@ -10,21 +10,19 @@
 //	Abstract: Label Entity
 
 #import <Foundation/Foundation.h>
+#import "TaggedEntity.h"
 
-
-@interface Label : NSObject {
+@interface Label : NSObject <TaggedEntity> {
 	NSString *mbid;
 	NSString *type;
 	NSString *name;
 	NSInteger score;
 	NSMutableArray *releases;
-	NSMutableArray *tags;
 }
 
 @property (nonatomic, retain) NSString *mbid;
 @property (nonatomic, retain) NSString *type;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic) NSInteger score;
-@property (nonatomic, retain) NSMutableArray *tags;
 @property (nonatomic, retain) NSMutableArray *releases;
 @end

@@ -18,6 +18,7 @@
 	Release *currentRelease;
 	Track *currentTrack;
 	bool parsingTrack;
+	bool parsingLabel;
 }
 @property (nonatomic, retain) Release *currentRelease;
 @property (nonatomic, retain) Track *currentTrack;

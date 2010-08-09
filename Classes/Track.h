@@ -27,5 +27,4 @@
 @property (nonatomic) NSInteger length;
 @property (nonatomic) NSInteger votes;
 @property (nonatomic, retain) NSNumber *rating;
--(NSString *) getMBID;
 @end

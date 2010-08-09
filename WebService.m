@@ -30,6 +30,25 @@
 	
 }
 
+// send data
+-(void)sendData:(NSURL *)url withData:(NSString *) data {
+	NSData *postData = [data dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+	NSString *dataLength = [NSString stringWithFormat:@"%d", [postData length]];
+	
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+	[request setHTTPMethod:@"POST"];
+	[request setValue:dataLength forHTTPHeaderField:@"Content-Length"];
+	[request setValue:@"application/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+	[request setHTTPBody:postData];
+	
+	serviceConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+	
+	//request = nil;
+	//[request release];
+	//serviceConnection = nil;
+	//[serviceConnection release];
+}
+
 // Disable caching
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
     return nil;
@@ -42,6 +61,14 @@
 // Append the new chunk of data
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [xmlData appendData:data];
+}
+
+-(void) connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+	if([challenge previousFailureCount] == 0) {
+		[[challenge sender] useCredential:[NSURLCredential credentialWithUser:@"brainpimp" password:@"" persistence:NSURLCredentialPersistenceForSession] forAuthenticationChallenge:challenge];
+	} else {
+		[[challenge sender] cancelAuthenticationChallenge:challenge];
+	}
 }
 
 // Finished downloading data

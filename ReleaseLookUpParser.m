@@ -26,12 +26,17 @@ static NSString *POSITION = @"position";
 static NSString *RECORDING = @"recording";
 static NSString *LENGTH = @"length";
 
+// label nodes
+static NSString *LABELINFO = @"label-info";
+static NSString *LABEL = @"label";
+
 -(void) parse:(NSData *) data {
 	xmlData = data;
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     parser.delegate = self;
 	currentString = [NSMutableString string];
 	parsingTrack = NO;
+	parsingLabel = NO;
 	[parser parse];
 
 	[parser release];
@@ -61,6 +66,13 @@ static NSString *LENGTH = @"length";
 		parsingTrack = YES;
 	} else if([elementName isEqualToString:RECORDING]) {
 		currentTrack.mbid = [attributeDict valueForKey:@"id"];
+	} else if([elementName isEqualToString:LABELINFO]) {
+		Label *label = [[Label alloc] init];
+		self.currentRelease.label = label;
+		[label release];
+		parsingLabel = YES;
+	} else if([elementName isEqualToString:LABEL]) {
+		self.currentRelease.label.mbid = [attributeDict valueForKey:@"id"];
 	}
 }
 
@@ -75,7 +87,11 @@ static NSString *LENGTH = @"length";
 			self.currentRelease.title = [NSString stringWithString:self.currentString];
 		}
 	} else if ([elementName isEqualToString:NAME]) {
+		if(parsingLabel) {
+			self.currentRelease.label.name = [NSString stringWithString:self.currentString];
+		} else {
 			self.currentRelease.artist = [NSString stringWithString:self.currentString];
+		}
 	} else if ([elementName isEqualToString:DATE]) {
 		self.currentRelease.date = [NSString stringWithString:self.currentString];
 	} else if ([elementName isEqualToString:POSITION]) {
