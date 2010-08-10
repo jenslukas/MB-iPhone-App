@@ -21,6 +21,7 @@ static NSString *TITLE = @"title";
 static NSString *NAME = @"name";
 static NSString *RELEASE = @"release";
 static NSString *TAGLIST = @"tag-list";
+static NSString *RATING = @"rating";
 
 -(void) parse:(NSData *) data {
 	xmlData = data;
@@ -35,10 +36,14 @@ static NSString *TAGLIST = @"tag-list";
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *) qualifiedName attributes:(NSDictionary *)attributeDict {
 	if([elementName isEqualToString:LABEL]){
+		results = [NSMutableArray array];
+		
 		Label *label = [[Label alloc] init];
 		label.mbid = [attributeDict valueForKey:@"id"];
 		label.type = [attributeDict valueForKey:@"type"];
 		label.releases = [NSMutableArray array];
+		label.votes = 0;
+		label.rating = [[NSNumber alloc] initWithInt:0];		
 		
 		self.currentLabel = label;
 		[label release];
@@ -54,6 +59,10 @@ static NSString *TAGLIST = @"tag-list";
 		storingCharacters = YES;
 	} else if([elementName isEqualToString:TAGLIST]) {
 		parsingTags = YES;
+	} else if([elementName isEqualToString:RATING]) {
+		self.currentLabel.votes = [[attributeDict valueForKey:@"votes-count"] intValue];
+		[currentString setString:@""];
+		storingCharacters = YES;		
 	}
 }
 
@@ -71,8 +80,12 @@ static NSString *TAGLIST = @"tag-list";
 		}
 	} else if([elementName isEqualToString:TITLE]) {
 		self.currentRelease.title = [NSString stringWithString:self.currentString];
+	} else if([elementName isEqualToString:RATING]) {
+		NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+		[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+		self.currentLabel.rating = [formatter numberFromString:self.currentString];
 	}
-	storingCharacters = NO;
+ 	storingCharacters = NO;
 }
 
 -(void) dealloc {

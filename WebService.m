@@ -32,6 +32,9 @@
 
 // send data
 -(void)sendData:(NSURL *)url withData:(NSString *) data {
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+	xmlData = [NSMutableData alloc];
+
 	NSData *postData = [data dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
 	NSString *dataLength = [NSString stringWithFormat:@"%d", [postData length]];
 	

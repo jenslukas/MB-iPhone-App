@@ -36,7 +36,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if(parsed) {
-		return 3;
+		return 4;
 	} else {
 		return 0;
 	}
@@ -50,7 +50,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
 
 	switch(indexPath.row) {
@@ -68,6 +68,39 @@
 			cell.textLabel.text = tags;
 			break;
 		}
+		case 3: {
+			// add stars
+			UIImage *unratedStar = [UIImage imageNamed:@"unratedStar.png"];
+			UIImage *ratedStar = [UIImage imageNamed:@"ratedStar.png"];
+			UIImageView *starView;
+			
+			for (int i = 1; i <= 5; i++) {
+				if(i <= [self.label.rating intValue]) {
+					starView = [[[UIImageView alloc] initWithImage:ratedStar] autorelease];						
+				} else {
+					starView = [[[UIImageView alloc] initWithImage:unratedStar] autorelease];												
+				}
+				
+				starView.frame = CGRectMake(5+((i-1)*40), 5, 35, 35);
+				[cell.contentView addSubview:starView];				
+			}
+			
+			NSString *ratingText;
+			ratingText = @"Average rating: ";
+			ratingText = [[[ratingText autorelease] stringByAppendingString:[self.label.rating stringValue]] retain];
+			ratingText = [[[ratingText autorelease] stringByAppendingString:@", rated "] retain];
+			ratingText = [[[ratingText autorelease] stringByAppendingString:[NSString stringWithFormat:@"%d", self.label.votes]] retain];
+			ratingText = [[[ratingText autorelease] stringByAppendingString:@" times"] retain];
+			
+			// add rating text
+			UILabel *ratingLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, 260, 17)];
+			ratingLabel.text = ratingText;
+			ratingLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
+			[cell.contentView addSubview:ratingLabel];
+			
+			break;
+		}
+			
 	}
 	
     return cell;
@@ -91,6 +124,15 @@
 		}
 	}
 }
+
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	// return different height for rating cell otherwise default height
+	if(indexPath.section == 0 && indexPath.row == 3) {
+		return 65;
+	}
+	return 44;
+}
+
 
 #pragma mark -
 #pragma mark Memory management

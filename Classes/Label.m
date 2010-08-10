@@ -13,7 +13,7 @@
 
 
 @implementation Label
-@synthesize mbid, type, name, score, tags, releases;
+@synthesize mbid, type, name, score, tags, releases, rating, votes;
 
 -(NSString *) getMBID {
 	return mbid;

@@ -18,6 +18,8 @@
 	NSString *name;
 	NSInteger score;
 	NSMutableArray *releases;
+	NSNumber *rating;
+	NSInteger votes;	
 }
 
 @property (nonatomic, retain) NSString *mbid;
@@ -25,4 +27,6 @@
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic) NSInteger score;
 @property (nonatomic, retain) NSMutableArray *releases;
+@property (nonatomic, retain) NSNumber *rating;
+@property (nonatomic) NSInteger votes;
 @end
