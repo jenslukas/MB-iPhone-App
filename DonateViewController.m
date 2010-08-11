@@ -26,7 +26,8 @@
     [super viewDidLoad];
 	[PayPal initializeWithAppID:@"APP-80W284485P519543T" forEnvironment:ENV_SANDBOX];
 	self.title = @"Donate";
-	
+	[self.navigationController setNavigationBarHidden:NO];		
+
 	// initial amount
 	amount = @"10.0";
 	

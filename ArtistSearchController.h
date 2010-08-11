@@ -16,6 +16,7 @@
 @private
 	NSArray *artists;
 	ServiceFacade *service;
+	UIActivityIndicatorView *activityView;
 }
 @property (nonatomic, retain) NSArray *artists;
 @end

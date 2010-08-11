@@ -8,10 +8,18 @@
 //
 //	Abstract: UITableViewCell with integrated UITextField
 
+@protocol EditTableCellDelegate
+-(void) keyPressed;
+@end
+
 @interface StringEditTableCell : UITableViewCell <UITextFieldDelegate> {
 	@private
 	UITextField *cellTextField; 
+	id <EditTableCellDelegate> delegate;
 }
+@property(nonatomic, retain) UITextField *cellTextField;
+@property(nonatomic, retain) id <EditTableCellDelegate> delegate;;
+
 -(void)setText:(NSString *)text;
 -(NSString *)getText;
 -(void)setType:(NSString *)type;

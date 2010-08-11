@@ -13,7 +13,7 @@
 #import "StringEditTableCell.h"
 #import "Search.h"
 
-@interface MainMenuController : UITableViewController {
+@interface MainMenuController : UITableViewController <EditTableCellDelegate> {
 	@private
 	StringEditTableCell *editTableCell;
 	Search *search;

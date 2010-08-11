@@ -44,11 +44,12 @@
     static NSString *CellIdentifier = @"Cell";
     if(indexPath.row == 0) {
 		editTableCell = [[[StringEditTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-		[editTableCell setText:@"Tag"];
+		editTableCell.cellTextField.placeholder = @"Tag";
 		return editTableCell;
 	} else {
 		UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddTagButtonCell"] autorelease];
 		cell.textLabel.text = @"Add tag";
+		cell.textLabel.textAlignment = UITextAlignmentCenter;
 		return cell;
 	}
 }

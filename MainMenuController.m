@@ -35,7 +35,8 @@
 	
 	// init searchText cell
 	editTableCell = [[[StringEditTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EditCell"] autorelease];
-	[editTableCell setText:@"Search text"];
+	editTableCell.delegate = self;
+	editTableCell.cellTextField.placeholder = @"Search text";
 	[editTableCell setType:@"String"];
 }
 
@@ -90,7 +91,7 @@
 	if(section == 0) {
 		numberOfRows = 1;
 	} else if(section == 1) {
-		numberOfRows = 4;
+		numberOfRows = 3;
 	} else if(section == 2) {
 		numberOfRows = 1;
 	} else if(section == 3) {
@@ -111,6 +112,7 @@
 			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		}		
 		cell.textLabel.text = @"Scan barcode";	
+		cell.textLabel.textAlignment = UITextAlignmentCenter;
 		return cell;
 	} else if(indexPath.section == 1) {
 	switch (indexPath.row) {
@@ -132,31 +134,16 @@
 			break;
 		}
 		case 2: {
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-			if (cell == nil) {
-				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-			}			
-			cell.textLabel.text = @"Search";
-			return cell;
-			break;
-		}
-		case 3: {
-			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Switch"];
-			if (cell == nil) {
-				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Switch"] autorelease];
-			}						UILabel *advancedSearchLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 200, 27)];
+			UITableViewCell	*cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Switch"] autorelease];
+			UILabel *advancedSearchLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 200, 27)];
 			advancedSearchLabel.font = [UIFont boldSystemFontOfSize:16];
 			advancedSearchLabel.text = @"Advanced Search";
 
 			advancedSearchSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(200, 8, 95, 27)];
 
 			[cell.contentView addSubview:advancedSearchLabel];
-			[cell.contentView addSubview:advancedSearchSwitch];
-			//cell.textLabel.text = @"Advanced Search";
-			UISwitch *advancedSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
-			[cell addSubview:advancedSwitch];
 			cell.textLabel.text = @"Advanced Search";
-			cell.accessoryView = advancedSwitch;
+			cell.accessoryView = advancedSearchSwitch;
 			return cell;
 			break;
 		}
@@ -169,6 +156,7 @@
 			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		}					
 		cell.textLabel.text = @"Log In";
+		cell.textLabel.textAlignment = UITextAlignmentCenter;
 		return cell;
 	} else if(indexPath.section == 3) {
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -176,6 +164,7 @@
 			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		}					
 		cell.textLabel.text = @"Donate";
+		cell.textLabel.textAlignment = UITextAlignmentCenter;
 		return cell;
 	}
     
@@ -199,42 +188,10 @@
 				[typeSelectionController release];
 				break;
 			}
-			// start search and open corresponding search results view
-			case 2: 
-			{
-				// set search info
-				search.searchText = [editTableCell getText];
-				search.detailSearch = NO;
-				
-				
-				// init view controller depending on search type
-				id searchController;
-				
-				switch([search getType]) {
-					case ArtistType:
-						searchController = [[ArtistSearchController alloc] initWithStyle:UITableViewStyleGrouped];
-						break;
-					case ReleaseGroupType:
-						searchController = [[ReleaseGroupSearchController alloc] initWithStyle:UITableViewStyleGrouped];
-						break;
-					case LabelType:
-						searchController = [[LabelSearchController alloc] initWithStyle:UITableViewStyleGrouped];
-						break;			
-				}
-				
-				// init and start service
-				ServiceFacade *service = [[ServiceFacade alloc] autorelease];
-				service.delegate = searchController;
-				[service search:search];
-				
-				
-				// push view
-				[self.navigationController pushViewController:searchController animated:YES];
-			}
 			default:
 				break;
 		}
-	} else if(indexPath.section == 2) {
+	} else if (indexPath.section == 2) {
 		LoginViewController *loginViewController = [[LoginViewController alloc] initWithStyle:UITableViewStyleGrouped];
 		[self.navigationController pushViewController:loginViewController animated:YES];
 	} else if(indexPath.section == 3) {
@@ -275,6 +232,36 @@
     [super dealloc];
 }
 
+-(void) keyPressed {
+	// start search and open corresponding search results view
+	// set search info
+	search.searchText = [editTableCell getText];
+	search.detailSearch = NO;
+		
+	// init view controller depending on search type
+	id searchController;
+		
+	switch([search getType]) {
+		case ArtistType:
+			searchController = [[ArtistSearchController alloc] initWithStyle:UITableViewStyleGrouped];
+			break;
+		case ReleaseGroupType:
+			searchController = [[ReleaseGroupSearchController alloc] initWithStyle:UITableViewStyleGrouped];
+			break;
+		case LabelType:
+			searchController = [[LabelSearchController alloc] initWithStyle:UITableViewStyleGrouped];
+			break;			
+	}
+	
+	// init and start service
+	ServiceFacade *service = [[ServiceFacade alloc] autorelease];
+	service.delegate = searchController;
+	[service search:search];
+	
+		
+	// push view
+	[self.navigationController pushViewController:searchController animated:YES];
+}
 
 @end
 

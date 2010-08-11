@@ -26,11 +26,11 @@
 	
 	// init login cells
 	usernameField = [[StringEditTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EditCell"];
-	[usernameField setText:@"Username"];
+	usernameField.cellTextField.placeholder = @"Username";
 	[usernameField setType:@"String"];
 
 	passwordField = [[StringEditTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PasswordCell"];
-	[passwordField setText:@"Password"];
+	passwordField.cellTextField.placeholder = @"Password";
 	[passwordField setType:@"String"];	
 }
 
@@ -39,18 +39,25 @@
 #pragma mark Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 3;
+	NSInteger *numberOfRows;
+	if(section == 0) {
+		numberOfRows = 2;
+	} else {
+		numberOfRows = 1;
+	}
+    return numberOfRows;
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	if(indexPath.section == 0) {
 	switch (indexPath.row) {
 		case 0: {
 			return usernameField;
@@ -60,14 +67,18 @@
 			return passwordField;
 			break;
 		}			
-		case 2: {
-			UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Login"] autorelease];			
-			cell.textLabel.text = @"Login";
-			return cell;
-			break;
-		}
 		default:
 			break;
+	}
+	} else {
+		static NSString *CellIdentifier = @"LoginButton"; 
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil) {
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		}		
+		cell.textLabel.text = @"Login";
+		cell.textLabel.textAlignment = UITextAlignmentCenter;
+		return cell;
 	}
 	return nil;
 }

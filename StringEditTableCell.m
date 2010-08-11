@@ -12,7 +12,7 @@
 
 
 @implementation StringEditTableCell
-
+@synthesize cellTextField, delegate;
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	[super initWithStyle:style reuseIdentifier:reuseIdentifier];
 	if(self == nil) {
@@ -25,7 +25,7 @@
 	cellTextField.delegate = self;
 	
 	//  Set the keyboard's return key label to DONE.
-    [cellTextField setReturnKeyType:UIReturnKeyDone];
+    [cellTextField setReturnKeyType:UIReturnKeySearch];
     
     //  Make the clear button appear automatically.
     [cellTextField setClearButtonMode:UITextFieldViewModeWhileEditing];
@@ -50,6 +50,7 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
 	[textField resignFirstResponder];
+	[delegate keyPressed];
 	return YES;
 }
 
