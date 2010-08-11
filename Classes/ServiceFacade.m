@@ -224,6 +224,12 @@
 	//[xml release];
 }	
 
+-(void)checkLogin:(NSString *)username andPassword:(NSString *)password {
+/*	
+http://test.musicbrainz.org//ws/2/artist/89ad4ac3-39f7-470e-963a-56509c546377?inc=user-tags
+*/
+}
+
 // called by Web Service when data download finished
 -(void)finishedDownload {
 	if(searchInfo.detailSearch) {

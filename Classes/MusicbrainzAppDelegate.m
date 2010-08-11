@@ -12,14 +12,12 @@
 #import "MusicbrainzAppDelegate.h"
 #import "MainMenuController.h"
 #import	"ReleaseContoller.h"
+#import "AccountInformation.h"
 
 @implementation MusicbrainzAppDelegate
-
 @synthesize window, navController;
 
-
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-	
 	// TODO clean up
 	MainMenuController *mainMenu = [[MainMenuController alloc] initWithStyle:UITableViewStyleGrouped];
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainMenu];

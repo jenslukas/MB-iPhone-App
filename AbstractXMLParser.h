@@ -17,7 +17,15 @@
 - (void) finishedParsing;
 @end
 
-@interface AbstractXMLParser : NSObject <NSXMLParserDelegate> {
+// TODO
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
+@protocol NSXMLParserDelegate
+@end
+#endif
+
+@interface AbstractXMLParser : NSObject <NSXMLParserDelegate> 
+
+{
 	@protected
 	NSMutableString *currentString;
     BOOL storingCharacters;

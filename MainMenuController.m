@@ -12,6 +12,7 @@
 #import "MainMenuController.h"
 #import "TypeSelectionController.h"
 #import "DonateViewController.h"
+#import "LoginViewController.h"
 #import "ServiceFacade.h"
 
 
@@ -104,28 +105,46 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
 	if(indexPath.section == 0) {
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil) {
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		}		
 		cell.textLabel.text = @"Scan barcode";	
+		return cell;
 	} else if(indexPath.section == 1) {
 	switch (indexPath.row) {
-		case 0:
+		case 0: {
+			StringEditTableCell *cell;
 			cell = editTableCell;
+			return cell;
 			break;
-		case 1:
+		}
+		case 1: {
+			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+			}			
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			int searchType = [search getType];
 			cell.textLabel.text = SearchTypeToString[searchType];
+			return cell;			
 			break;
-		case 2:
+		}
+		case 2: {
+			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil) {
+				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+			}			
 			cell.textLabel.text = @"Search";
+			return cell;
 			break;
+		}
 		case 3: {
-			/*
-			UILabel *advancedSearchLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 200, 27)];
+			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Switch"];
+			if (cell == nil) {
+				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Switch"] autorelease];
+			}						UILabel *advancedSearchLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 200, 27)];
 			advancedSearchLabel.font = [UIFont boldSystemFontOfSize:16];
 			advancedSearchLabel.text = @"Advanced Search";
 
@@ -134,23 +153,33 @@
 			[cell.contentView addSubview:advancedSearchLabel];
 			[cell.contentView addSubview:advancedSearchSwitch];
 			//cell.textLabel.text = @"Advanced Search";
-			*/
 			UISwitch *advancedSwitch = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
 			[cell addSubview:advancedSwitch];
 			cell.textLabel.text = @"Advanced Search";
 			cell.accessoryView = advancedSwitch;
-			 break;
+			return cell;
+			break;
 		}
 		default:
 			break;
 	}
 	} else if (indexPath.section == 2) {
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil) {
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		}					
 		cell.textLabel.text = @"Log In";
+		return cell;
 	} else if(indexPath.section == 3) {
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil) {
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		}					
 		cell.textLabel.text = @"Donate";
+		return cell;
 	}
     
-    return cell;
+    return nil;
 }
 
 
@@ -205,6 +234,9 @@
 			default:
 				break;
 		}
+	} else if(indexPath.section == 2) {
+		LoginViewController *loginViewController = [[LoginViewController alloc] initWithStyle:UITableViewStyleGrouped];
+		[self.navigationController pushViewController:loginViewController animated:YES];
 	} else if(indexPath.section == 3) {
 		DonateViewController *donateViewController = [[DonateViewController alloc] initWithStyle:UITableViewStyleGrouped];
 		[self.navigationController pushViewController:donateViewController animated:YES];

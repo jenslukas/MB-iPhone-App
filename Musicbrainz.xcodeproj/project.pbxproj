@@ -52,6 +52,9 @@
 		84B5064A11D10EB800B82131 /* LabelSearchParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5064911D10EB800B82131 /* LabelSearchParser.m */; };
 		84B5064D11D10F1900B82131 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5064C11D10F1900B82131 /* Label.m */; };
 		84B5C05F11FF0DEE00CA3198 /* ReleaseGroupSearchParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5C05E11FF0DEE00CA3198 /* ReleaseGroupSearchParser.m */; };
+		84C2A22A121174620090FBDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2A229121174620090FBDA /* Security.framework */; };
+		84C2A23E121177C00090FBDA /* AccountInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A23D121177C00090FBDA /* AccountInformation.m */; };
+		84CAD61F1211FCA5008D961E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAD61E1211FCA5008D961E /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +145,11 @@
 		84B5064C11D10F1900B82131 /* Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Label.m; sourceTree = "<group>"; };
 		84B5C05D11FF0DEE00CA3198 /* ReleaseGroupSearchParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseGroupSearchParser.h; sourceTree = "<group>"; };
 		84B5C05E11FF0DEE00CA3198 /* ReleaseGroupSearchParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseGroupSearchParser.m; sourceTree = "<group>"; };
+		84C2A229121174620090FBDA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		84C2A23C121177C00090FBDA /* AccountInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInformation.h; sourceTree = "<group>"; };
+		84C2A23D121177C00090FBDA /* AccountInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInformation.m; sourceTree = "<group>"; };
+		84CAD61D1211FCA5008D961E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		84CAD61E1211FCA5008D961E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Musicbrainz-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Musicbrainz-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +162,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				848AF4CC11F9B64000E0244F /* libPayPalMEP.a in Frameworks */,
+				84C2A22A121174620090FBDA /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +187,8 @@
 				8487DEEA11FDAE50006DB16C /* ReleaseGroup.h */,
 				8487DEEB11FDAE50006DB16C /* ReleaseGroup.m */,
 				849AC57D11FEBC6000440656 /* TaggedEntity.h */,
+				84C2A23C121177C00090FBDA /* AccountInformation.h */,
+				84C2A23D121177C00090FBDA /* AccountInformation.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -234,6 +245,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84C2A229121174620090FBDA /* Security.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -253,6 +265,8 @@
 				848EAD8511B94EF100357E7D /* TypeSelectionController.m */,
 				84978A341210574300E74D6F /* DonateViewController.h */,
 				84978A351210574300E74D6F /* DonateViewController.m */,
+				84CAD61D1211FCA5008D961E /* LoginViewController.h */,
+				84CAD61E1211FCA5008D961E /* LoginViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -460,6 +474,8 @@
 				84898AC311FF3B74002E09C2 /* LabelViewController.m in Sources */,
 				849789A712101DFA00E74D6F /* AddTagViewController.m in Sources */,
 				84978A361210574300E74D6F /* DonateViewController.m in Sources */,
+				84C2A23E121177C00090FBDA /* AccountInformation.m in Sources */,
+				84CAD61F1211FCA5008D961E /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,8 +525,9 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
 		};
