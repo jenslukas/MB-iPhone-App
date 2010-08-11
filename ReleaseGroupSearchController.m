@@ -20,7 +20,11 @@
     [super viewDidLoad];
 	[self.navigationController setNavigationBarHidden:NO];	
 	self.title = @"Release group search";
-	self.view.backgroundColor = [UIColor orangeColor];
+	
+	activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+	[self.view addSubview:activityView];
+	activityView.center = CGPointMake(160, 180);
+	[activityView startAnimating];	
 }
 
 #pragma mark Table view methods
@@ -67,6 +71,7 @@
 }
 
 - (void) finishedRequest:(NSArray *) results {
+	[activityView stopAnimating];	
 	self.releaseGroups = [NSArray arrayWithArray:results];
 	[self.tableView reloadData];
 }

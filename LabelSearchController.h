@@ -16,6 +16,7 @@
 @private
 	NSArray *labels;
 	ServiceFacade *service;
+	UIActivityIndicatorView *activityView;
 }
 @property (nonatomic, retain) NSArray *labels;
 @end

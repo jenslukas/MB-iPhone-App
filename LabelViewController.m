@@ -24,6 +24,11 @@
 	self.title = @"Label";	
 	parsed = NO;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
+	activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+	[self.view addSubview:activityView];
+	activityView.center = CGPointMake(160, 180);
+	[activityView startAnimating];	
 }
 
 #pragma mark -
@@ -150,6 +155,7 @@
 }
 
 -(void) finishedRequest:(id)results {
+	[activityView stopAnimating];
 	self.label = [results objectAtIndex:0];
 	parsed = YES;
 	[self.tableView reloadData];

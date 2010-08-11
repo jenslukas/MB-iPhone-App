@@ -16,6 +16,7 @@
 @interface LabelViewController : UITableViewController <DataCompleteDelegate> {
 	Label *label;
 	bool parsed;
+	UIActivityIndicatorView *activityView;
 }
 @property(nonatomic, retain) Label *label;
 @end

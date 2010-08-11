@@ -23,6 +23,7 @@
 	UILabel *recordLabel;
 	UILabel *dateLabel;		
 	bool parsed;
+	UIActivityIndicatorView *activityView;
 }
 
 @property (nonatomic, retain) ReleaseGroup *releaseGroup;

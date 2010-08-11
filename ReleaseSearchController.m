@@ -21,6 +21,11 @@
     [super viewDidLoad];
 	[self.navigationController setNavigationBarHidden:NO];	
 	self.title = @"Releases";
+	
+	activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+	[self.view addSubview:activityView];
+	activityView.center = CGPointMake(160, 180);
+	[activityView startAnimating];	
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -93,6 +98,7 @@
 }
 
 - (void) finishedRequest:(NSArray *) results {
+	[activityView stopAnimating];	
 	self.releaseGroup = [results objectAtIndex:0];
 	[self.tableView reloadData];
 }

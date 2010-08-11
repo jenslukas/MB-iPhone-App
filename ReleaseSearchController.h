@@ -17,6 +17,7 @@
 	@private
 	ReleaseGroup *releaseGroup;
 	ServiceFacade *service;
+	UIActivityIndicatorView *activityView;
 }
 @property (nonatomic, retain) ReleaseGroup *releaseGroup;
 @end

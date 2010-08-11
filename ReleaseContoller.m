@@ -112,6 +112,7 @@
 }
 
 - (void) finishedRequest:(id) results {
+	[activityView stopAnimating];	
 	self.release = [results objectAtIndex:0];
 	artistNameLabel.text = self.release.artist; 
 	releaseNameLabel.text = self.release.title; 	

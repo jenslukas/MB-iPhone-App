@@ -40,6 +40,11 @@
 	parsed = NO;
 	self.title = @"Release";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
+	activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+	[self.view addSubview:activityView];
+	activityView.center = CGPointMake(160, 180);
+	[activityView startAnimating];	
 }
 
 #pragma mark -
@@ -230,6 +235,7 @@
 #pragma mark -
 #pragma mark DataCompleteDelegate implementation
 -(void) finishedRequest:(id)results {
+	[activityView stopAnimating];	
 	[self.releaseGroup.releases replaceObjectAtIndex:selectedReleaseIndex withObject:[results objectAtIndex:0]];
 	parsed = YES;
 	[self.tableView reloadData];	

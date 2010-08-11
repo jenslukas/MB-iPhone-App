@@ -18,6 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+	[self.view addSubview:activityView];
+	activityView.center = CGPointMake(160, 180);
+	[activityView startAnimating];	
 }
 
 #pragma mark Table view methods
@@ -66,6 +70,7 @@
 }
 
 - (void) finishedRequest:(NSArray *) results {
+	[activityView stopAnimating];	
 	self.labels = [NSArray arrayWithArray:results];
 	[self.tableView reloadData];
 }

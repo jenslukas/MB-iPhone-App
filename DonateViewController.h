@@ -15,5 +15,7 @@
 
 @interface DonateViewController : UITableViewController <PayPalMEPDelegate> {
 	NSString *amount;
+	UIActivityIndicatorView *activityView;
+	bool payPalLibraryLoaded;
 }
 @end

@@ -16,6 +16,7 @@
 @private
 	NSArray *releaseGroups;
 	ServiceFacade *service;
+	UIActivityIndicatorView *activityView;
 }
 @property (nonatomic, retain) NSArray *releaseGroups;
 @end

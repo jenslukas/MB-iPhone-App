@@ -21,6 +21,7 @@
 	UILabel *releaseNameLabel;
 	UILabel *recordLabel;
 	UILabel *dateLabel;	
+	UIActivityIndicatorView *activityView;	
 }
 @property (nonatomic, retain) Release *release;
 @end

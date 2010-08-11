@@ -24,6 +24,11 @@
 	parsed = NO;
 	self.title = @"Track";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
+	activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+	[self.view addSubview:activityView];
+	activityView.center = CGPointMake(160, 180);
+	[activityView startAnimating];	
 } 
 
 #pragma mark -
@@ -161,6 +166,7 @@
 #pragma mark DataCompleteDelegate implementation
 
 -(void) finishedRequest:(id)results {
+	[activityView stopAnimating];	
 	self.track = [results objectAtIndex:0];
 	parsed = YES;
 	[self.tableView reloadData];

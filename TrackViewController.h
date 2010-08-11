@@ -17,6 +17,7 @@
 @interface TrackViewController : UITableViewController <DataCompleteDelegate> {
 	Track *track;
 	bool parsed;
+	UIActivityIndicatorView *activityView;
 }
 
 @property (nonatomic, retain) Track *track;

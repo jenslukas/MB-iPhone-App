@@ -39,6 +39,11 @@
 
 	self.title = @"Artist";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
+	activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+	[self.view addSubview:activityView];
+	activityView.center = CGPointMake(160, 180);
+	[activityView startAnimating];	
 } 
 
 /*
@@ -234,6 +239,7 @@
 #pragma mark DataCompleteDelegate implementation
 
 -(void) finishedRequest:(id)results {
+	[activityView stopAnimating];
 	self.artist = [results objectAtIndex:0];
 	[self.tableView reloadData];
 }

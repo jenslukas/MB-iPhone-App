@@ -243,13 +243,13 @@
 		
 	switch([search getType]) {
 		case ArtistType:
-			searchController = [[ArtistSearchController alloc] initWithStyle:UITableViewStyleGrouped];
+			searchController = [[ArtistSearchController alloc] initWithStyle:UITableViewStylePlain];
 			break;
 		case ReleaseGroupType:
-			searchController = [[ReleaseGroupSearchController alloc] initWithStyle:UITableViewStyleGrouped];
+			searchController = [[ReleaseGroupSearchController alloc] initWithStyle:UITableViewStylePlain];
 			break;
 		case LabelType:
-			searchController = [[LabelSearchController alloc] initWithStyle:UITableViewStyleGrouped];
+			searchController = [[LabelSearchController alloc] initWithStyle:UITableViewStylePlain];
 			break;			
 	}
 	

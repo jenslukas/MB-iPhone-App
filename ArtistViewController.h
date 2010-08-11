@@ -16,6 +16,7 @@
 
 @interface ArtistViewController : UITableViewController <DataCompleteDelegate> {
 	Artist *artist;
+	UIActivityIndicatorView *activityView;
 }
 
 @property (nonatomic, retain) Artist *artist;

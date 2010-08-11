@@ -24,16 +24,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[PayPal initializeWithAppID:@"APP-80W284485P519543T" forEnvironment:ENV_SANDBOX];
 	self.title = @"Donate";
 	[self.navigationController setNavigationBarHidden:NO];		
-
+	payPalLibraryLoaded = NO;
 	// initial amount
 	amount = @"10.0";
-	
+
+	activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+	[self.view addSubview:activityView];
+	activityView.center = CGPointMake(160, 180);
+	[activityView startAnimating];
+
+	[PayPal initializeWithAppID:@"APP-80W284485P519543T" forEnvironment:ENV_SANDBOX];	
 	UIButton *button = [[PayPal getInstance] getPayButton:self buttonType:BUTTON_278x43 startCheckOut:@selector(payWithPayPal) PaymentType:DONATION withLeft:20 withTop:240];	
 	[self.view addSubview:button];
-	
+}
+-(void)viewDidAppear:(BOOL)animated {
+	[PayPal initializeWithAppID:@"APP-80W284485P519543T" forEnvironment:ENV_SANDBOX];	
+	while (!payPalLibraryLoaded) {
+		if([[PayPal getInstance] initialized]) {
+			payPalLibraryLoaded = YES;
+			UIButton *button = [[PayPal getInstance] getPayButton:self buttonType:BUTTON_278x43 startCheckOut:@selector(payWithPayPal) PaymentType:DONATION withLeft:20 withTop:240];	
+			[self.view addSubview:button];
+			[activityView stopAnimating];
+			[self.tableView reloadData];
+		}
+	}
 }
 
 #pragma mark -
@@ -47,7 +63,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 5;
+	NSInteger numberOfRows = 0;
+	if(payPalLibraryLoaded) {
+		numberOfRows = 5;
+	}
+	return numberOfRows;
 }
 
 
@@ -99,8 +119,7 @@
 	// set new checkmark
 	NSIndexPath *newSelectionIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:newSelectionIndexPath];
-	cell.accessoryType = UITableViewCellAccessoryCheckmark
-	;	
+	cell.accessoryType = UITableViewCellAccessoryCheckmark;	
 	
 	// set new amount
     switch (indexPath.row) {
