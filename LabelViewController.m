@@ -154,9 +154,9 @@
     // For example: self.myOutlet = nil;
 }
 
--(void) finishedRequest:(id)results {
+- (void) finishedRequest:(ServiceResponse *)response {
 	[activityView stopAnimating];
-	self.label = [results objectAtIndex:0];
+	self.label = [response.data objectAtIndex:0];
 	parsed = YES;
 	[self.tableView reloadData];
 }

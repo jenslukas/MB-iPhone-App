@@ -97,9 +97,9 @@
     [super dealloc];
 }
 
-- (void) finishedRequest:(NSArray *) results {
-	[activityView stopAnimating];	
-	self.releaseGroup = [results objectAtIndex:0];
+- (void) finishedRequest:(ServiceResponse *)response {
+	[activityView stopAnimating];
+	self.releaseGroup = [response.data objectAtIndex:0];
 	[self.tableView reloadData];
 }
 

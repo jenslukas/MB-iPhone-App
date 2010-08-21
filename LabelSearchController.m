@@ -18,6 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	[self.navigationController setNavigationBarHidden:NO];
+	
 	activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
 	[self.view addSubview:activityView];
 	activityView.center = CGPointMake(160, 180);
@@ -69,9 +71,9 @@
 	[labelController release];	
 }
 
-- (void) finishedRequest:(NSArray *) results {
-	[activityView stopAnimating];	
-	self.labels = [NSArray arrayWithArray:results];
+- (void) finishedRequest:(ServiceResponse *)response {
+	[activityView stopAnimating];
+	self.labels = [NSArray arrayWithArray:response.data];
 	[self.tableView reloadData];
 }
 

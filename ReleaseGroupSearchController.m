@@ -70,9 +70,10 @@
 	[releaseSearchController release];	
 }
 
-- (void) finishedRequest:(NSArray *) results {
-	[activityView stopAnimating];	
-	self.releaseGroups = [NSArray arrayWithArray:results];
+
+- (void) finishedRequest:(ServiceResponse *)response {
+	[activityView stopAnimating];
+	self.releaseGroups = [NSArray arrayWithArray:response.data];
 	[self.tableView reloadData];
 }
 

@@ -164,10 +164,9 @@
 
 #pragma mark -
 #pragma mark DataCompleteDelegate implementation
-
--(void) finishedRequest:(id)results {
-	[activityView stopAnimating];	
-	self.track = [results objectAtIndex:0];
+- (void) finishedRequest:(ServiceResponse *)response {
+	[activityView stopAnimating];
+	self.track = [response.data objectAtIndex:0];
 	parsed = YES;
 	[self.tableView reloadData];
 }

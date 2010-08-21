@@ -11,6 +11,7 @@
 
 #import <UIKit/UIKit.h>
 #import	"ServiceFacade.h"
+#import "ServiceResponse.h"
 
 @interface ArtistSearchController : UITableViewController <DataCompleteDelegate> {
 @private

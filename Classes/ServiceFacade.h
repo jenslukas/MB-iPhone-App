@@ -15,9 +15,10 @@
 #import "Search.h"
 #import "Release.h"
 #import "Artist.h"
+#import "ServiceResponse.h"
 
 @protocol DataCompleteDelegate
--(void) finishedRequest:(id) results;
+-(void) finishedRequest:(ServiceResponse *) response;
 @end
 
 @interface ServiceFacade : NSObject <RequestCompleteDelegate, ParsingFinishedDelegate> {
@@ -26,6 +27,7 @@
 	NSArray *results;
 	id <DataCompleteDelegate> delegate;
 	Search *searchInfo;
+	ServiceResponse *serviceResponse;
 }
 
 @property (nonatomic, retain) NSArray *results;

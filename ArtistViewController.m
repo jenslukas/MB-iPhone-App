@@ -14,6 +14,7 @@
 #import "ReleaseGroup.h"
 #import "ReleaseSearchController.h"
 #import "TagListViewController.h"
+#import "RatingViewController.h"
 
 @implementation ArtistViewController
 @synthesize artist;
@@ -196,8 +197,9 @@
 			[self.navigationController pushViewController:tagListViewController animated:YES];
 			[tagListViewController release];
 		} else if(indexPath.row == 2) {
-			ServiceFacade *serviceFacade = [ServiceFacade alloc];
-			[serviceFacade rateArtist:self.artist.mbid withRating:100];
+			RatingViewController *ratingViewController = [[RatingViewController alloc] initWithStyle:UITableViewStyleGrouped];
+			ratingViewController.entity = self.artist;
+			[self.navigationController pushViewController:ratingViewController animated:YES];
 		}
 	} else if(indexPath.section == 1) {
 		// show search results page for selected release group
@@ -237,10 +239,9 @@
 
 #pragma mark -
 #pragma mark DataCompleteDelegate implementation
-
--(void) finishedRequest:(id)results {
+- (void) finishedRequest:(ServiceResponse *)response {
 	[activityView stopAnimating];
-	self.artist = [results objectAtIndex:0];
+	self.artist = [response.data objectAtIndex:0];
 	[self.tableView reloadData];
 }
 

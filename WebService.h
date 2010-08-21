@@ -10,10 +10,11 @@
 // Abstract: Responsible for retrieving data from a given URL
 
 #import <Foundation/Foundation.h>
+#import "ServiceResponse.h"
 
 // interface
 @protocol RequestCompleteDelegate
--(void)finishedDownload;
+-(void)finishedRequest:(ServiceResponse *)response;
 @end
 
 // common class definition
@@ -22,8 +23,8 @@
 	NSURLConnection *serviceConnection;
 	NSMutableData *xmlData;
 	id <RequestCompleteDelegate> delegate;
+	ServiceResponse *response;
 }
-@property (nonatomic, retain) NSMutableData *xmlData;
 @property (nonatomic, retain) id <RequestCompleteDelegate> delegate;
 
 -(void)getData:(NSURL *)url;

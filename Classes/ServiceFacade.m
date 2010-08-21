@@ -34,11 +34,11 @@
 	
 	// encode search text
 	NSString * encodedQuery = (NSString *)CFURLCreateStringByAddingPercentEscapes(
-																				   NULL,
-																				   (CFStringRef)search.searchText,
-																				   NULL,
-																				   (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-																				   kCFStringEncodingUTF8 );	
+																				  NULL,
+																				  (CFStringRef)search.searchText,
+																				  NULL,
+																				  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+																				  kCFStringEncodingUTF8 );	
 	switch([search getType]) {
 		case ArtistType:
 			urlToCall = @"http://test.musicbrainz.org/ws/2/artist?query=";
@@ -78,7 +78,7 @@
 	urlToCall = @"http://test.musicbrainz.org/ws/2/release/";
 	urlToCall = [[[urlToCall autorelease] stringByAppendingString:release.mbid] retain];
 	urlToCall = [[[urlToCall autorelease] stringByAppendingString:@"?inc=recordings+artists+labels"] retain];
-
+	
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	[service getData:url];
 	[urlToCall release];
@@ -167,12 +167,13 @@
 	
 	NSString *urlToCall;
 	urlToCall = @"http://test.musicbrainz.org/ws/2/rating?client=iphone-0.7";
-
+	
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	
 	NSString *xml = [NSString stringWithFormat:@"<metadata xmlns=\"http://musicbrainz.org/ns/mmd-2.0#\"><artist-list><artist id=\"%@\"><user-rating>%d</user-rating></artist></artist-list></metadata>", mbid, rating];
+	NSLog(@"%@", xml);
 	[service sendData:url withData:xml];
-
+	
 	[urlToCall release];
 	//[xml release];
 }	
@@ -207,16 +208,23 @@
 	} else if([entity isKindOfClass:[ReleaseGroup class]]) {
 		xmlEntityType = @"release-group";
 	}
-
+	
 	
 	service = [WebService alloc];
 	service.delegate = self;
+	
+	// create url
 	NSString *urlToCall;
 	urlToCall = @"http://test.musicbrainz.org/ws/2/tag?client=iphone-0.7";
-	
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	
-	NSString *xml = [NSString stringWithFormat:@"<metadata xmlns=\"http://musicbrainz.org/ns/mmd-2.0#\"><%@-list><%@ id=\"%@\"><user-tag-list><user-tag><name>%@</name></user-tag></user-tag-list></%@></%@-list></metadata>", xmlEntityType, xmlEntityType, [entity getMBID], tag, xmlEntityType, xmlEntityType];
+	// create XML
+	NSMutableString *tagString;
+	for(int i = 0; i < [[entity tags] count]; i++) {
+		[tagString appendFormat:@"<user-tag><name>%@</name></user-tag>", [[entity tags] objectAtIndex:i]];
+	}
+	
+	NSString *xml = [NSString stringWithFormat:@"<metadata xmlns=\"http://musicbrainz.org/ns/mmd-2.0#\"><%@-list><%@ id=\"%@\"><user-tag-list>%@</user-tag-list></%@></%@-list></metadata>", xmlEntityType, xmlEntityType, [entity getMBID], tagString, xmlEntityType, xmlEntityType];
 	NSLog(@"%@", xml);
 	[service sendData:url withData:xml];
 	
@@ -225,64 +233,67 @@
 }	
 
 -(void)checkLogin:(NSString *)username andPassword:(NSString *)password {
-/*	
-http://test.musicbrainz.org//ws/2/artist/89ad4ac3-39f7-470e-963a-56509c546377?inc=user-tags
-*/
+	/*	
+	 http://test.musicbrainz.org//ws/2/artist/89ad4ac3-39f7-470e-963a-56509c546377?inc=user-tags
+	 */
 }
 
 // called by Web Service when data download finished
--(void)finishedDownload {
-	if(searchInfo.detailSearch) {
-		switch([searchInfo getType]) {
-			case ArtistType:
-				xmlParser = [ArtistLookUpParser alloc];
-				break;
-			case ReleaseType:
-				xmlParser = [ReleaseLookUpParser alloc];
-				break;
-			case LabelType:
-				xmlParser = [LabelLookUpParser alloc];
-				break;
-			case ReleaseGroupType:
-				xmlParser = [ReleaseGroupLookUpParser alloc];
-				break;
-			case TrackType:
-				xmlParser = [TrackLookUpParser alloc];
-				break;
-
+-(void)finishedRequest:(ServiceResponse *)response {
+	if([response getResponseCode] == Success) {
+		serviceResponse = response;
+		if(searchInfo.detailSearch) {
+			switch([searchInfo getType]) {
+				case ArtistType:
+					xmlParser = [ArtistLookUpParser alloc];
+					break;
+				case ReleaseType:
+					xmlParser = [ReleaseLookUpParser alloc];
+					break;
+				case LabelType:
+					xmlParser = [LabelLookUpParser alloc];
+					break;
+				case ReleaseGroupType:
+					xmlParser = [ReleaseGroupLookUpParser alloc];
+					break;
+				case TrackType:
+					xmlParser = [TrackLookUpParser alloc];
+					break;
+					
+			}
+			xmlParser.delegate = self;
+			[xmlParser parse:response.data];		
+			
+		} else {
+			switch([searchInfo getType]) {
+				case ArtistType:
+					xmlParser = [ArtistSearchParser alloc];
+					break;
+				case ReleaseGroupType:
+					xmlParser = [ReleaseGroupSearchParser alloc];
+					break;
+				case ReleaseType:
+					xmlParser = [ReleaseSearchParser alloc];
+					break;
+				case LabelType:
+					xmlParser = [LabelSearchParser alloc];
+					break;			
+			}
+			xmlParser.delegate = self;
+			[xmlParser parse:response.data];		
 		}
-		xmlParser.delegate = self;
-		[xmlParser parse:service.xmlData];		
-		
 	} else {
-		switch([searchInfo getType]) {
-			case ArtistType:
-				xmlParser = [ArtistSearchParser alloc];
-				break;
-			case ReleaseGroupType:
-				xmlParser = [ReleaseGroupSearchParser alloc];
-				break;
-			case ReleaseType:
-				xmlParser = [ReleaseSearchParser alloc];
-				break;
-			case LabelType:
-				xmlParser = [LabelSearchParser alloc];
-				break;			
-		}
-		xmlParser.delegate = self;
-		[xmlParser parse:service.xmlData];		
+		[delegate finishedRequest:response];
 	}
 }
 
 // called by XML Parser when data parsing finisheds
 -(void) finishedParsing {
 	results = [NSArray  arrayWithArray:xmlParser.results];
-	[delegate finishedRequest:results];
+	serviceResponse.data = results;
+	[delegate finishedRequest:serviceResponse];
 	[searchInfo release];
 	delegate = nil;
-	//results = nil;
-	//[results release];
-	//[xmlParser release];
 	[service release];
 }
 

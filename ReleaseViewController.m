@@ -234,11 +234,11 @@
 
 #pragma mark -
 #pragma mark DataCompleteDelegate implementation
--(void) finishedRequest:(id)results {
-	[activityView stopAnimating];	
-	[self.releaseGroup.releases replaceObjectAtIndex:selectedReleaseIndex withObject:[results objectAtIndex:0]];
+- (void) finishedRequest:(ServiceResponse *)response {
+	[activityView stopAnimating];
+	[self.releaseGroup.releases replaceObjectAtIndex:selectedReleaseIndex withObject:[response.data objectAtIndex:0]];
 	parsed = YES;
-	[self.tableView reloadData];	
+	[self.tableView reloadData];
 }
 
 @end

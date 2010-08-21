@@ -70,9 +70,9 @@
 	[artistController release];	
 }
 
-- (void) finishedRequest:(NSArray *) results {
+- (void) finishedRequest:(ServiceResponse *)response {
 	[activityView stopAnimating];
-	self.artists = [NSArray arrayWithArray:results];
+	self.artists = [NSArray arrayWithArray:response.data];
 	[self.tableView reloadData];
 }
 

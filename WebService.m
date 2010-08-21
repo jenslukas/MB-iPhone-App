@@ -13,12 +13,13 @@
 #import "AccountInformation.h"
 
 @implementation WebService
-@synthesize xmlData, delegate;
+@synthesize delegate;
 
 // get data from given URL
 -(void)getData:(NSURL *)url {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	xmlData = [NSMutableData alloc];
+	response = [ServiceResponse alloc];
 	
 	[[NSURLCache sharedURLCache] removeAllCachedResponses];
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -28,7 +29,6 @@
 	[request release];
 	serviceConnection = nil;
 	[serviceConnection release];
-	
 }
 
 // send data
@@ -58,8 +58,10 @@
     return nil;
 }
 
-// Forward errors to the delegate. (not implemented yet)
+// Forward errors to the delegate.
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+	[response setResponseCode:NetworkFailure];
+	[delegate finishedRequest:response];
 }
 
 // Append the new chunk of data
@@ -74,6 +76,7 @@
 		NSString *password = [account getPassword];
 		[[challenge sender] useCredential:[NSURLCredential credentialWithUser:username password:password persistence:NSURLCredentialPersistenceForSession] forAuthenticationChallenge:challenge];
 	} else {
+		[response setResponseCode:AuthenticationFailure];
 		[[challenge sender] cancelAuthenticationChallenge:challenge];
 	}
 }
@@ -81,9 +84,10 @@
 // Finished downloading data
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-	
+	[response setResponseCode:Success];
+	response.data = xmlData;
 	//notify delegate
-	[delegate finishedDownload];
+	[delegate finishedRequest:response];
 }
 
 -(void) dealloc {

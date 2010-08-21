@@ -46,6 +46,7 @@
 		849AC57C11FEBBA200440656 /* TagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849AC57B11FEBBA200440656 /* TagListViewController.m */; };
 		849CC82711D16E4300CC46F7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CC82611D16E4300CC46F7 /* icon.png */; };
 		84A0D89911D8D645009F2888 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0D89811D8D645009F2888 /* Track.m */; };
+		84A37DBA1212DCD50039282B /* RatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A37DB91212DCD50039282B /* RatingViewController.m */; };
 		84B505C611D1002000B82131 /* MusicBrainzLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B505C511D1002000B82131 /* MusicBrainzLogo.png */; };
 		84B5062411D1050E00B82131 /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5062311D1050E00B82131 /* Artist.m */; };
 		84B5063711D10ADB00B82131 /* ArtistSearchParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5063611D10ADB00B82131 /* ArtistSearchParser.m */; };
@@ -55,6 +56,7 @@
 		84C2A22A121174620090FBDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2A229121174620090FBDA /* Security.framework */; };
 		84C2A23E121177C00090FBDA /* AccountInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A23D121177C00090FBDA /* AccountInformation.m */; };
 		84CAD61F1211FCA5008D961E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CAD61E1211FCA5008D961E /* LoginViewController.m */; };
+		84CCC7681213EF8B00BDB402 /* ServiceResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CCC7671213EF8B00BDB402 /* ServiceResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +136,8 @@
 		849CC82611D16E4300CC46F7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		84A0D89711D8D645009F2888 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		84A0D89811D8D645009F2888 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
+		84A37DB81212DCD50039282B /* RatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingViewController.h; sourceTree = "<group>"; };
+		84A37DB91212DCD50039282B /* RatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingViewController.m; sourceTree = "<group>"; };
 		84B505C511D1002000B82131 /* MusicBrainzLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MusicBrainzLogo.png; sourceTree = "<group>"; };
 		84B5062211D1050E00B82131 /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artist.h; sourceTree = "<group>"; };
 		84B5062311D1050E00B82131 /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 		84C2A23D121177C00090FBDA /* AccountInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInformation.m; sourceTree = "<group>"; };
 		84CAD61D1211FCA5008D961E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		84CAD61E1211FCA5008D961E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		84CCC7661213EF8B00BDB402 /* ServiceResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceResponse.h; sourceTree = "<group>"; };
+		84CCC7671213EF8B00BDB402 /* ServiceResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceResponse.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Musicbrainz-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Musicbrainz-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -353,6 +359,8 @@
 				848DCA2311BC1C2D00A456EF /* ServiceFacade.m */,
 				848AF02611BC5D7E0059FBB8 /* WebService.h */,
 				848AF02711BC5D7E0059FBB8 /* WebService.m */,
+				84CCC7661213EF8B00BDB402 /* ServiceResponse.h */,
+				84CCC7671213EF8B00BDB402 /* ServiceResponse.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -377,6 +385,8 @@
 				849AC57B11FEBBA200440656 /* TagListViewController.m */,
 				849789A512101DFA00E74D6F /* AddTagViewController.h */,
 				849789A612101DFA00E74D6F /* AddTagViewController.m */,
+				84A37DB81212DCD50039282B /* RatingViewController.h */,
+				84A37DB91212DCD50039282B /* RatingViewController.m */,
 			);
 			name = "Detail Subpages";
 			sourceTree = "<group>";
@@ -476,6 +486,8 @@
 				84978A361210574300E74D6F /* DonateViewController.m in Sources */,
 				84C2A23E121177C00090FBDA /* AccountInformation.m in Sources */,
 				84CAD61F1211FCA5008D961E /* LoginViewController.m in Sources */,
+				84A37DBA1212DCD50039282B /* RatingViewController.m in Sources */,
+				84CCC7681213EF8B00BDB402 /* ServiceResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
