@@ -45,7 +45,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-	NSInteger *numberOfRows;
+	NSInteger numberOfRows;
 	if(section == 0) {
 		numberOfRows = 2;
 	} else {

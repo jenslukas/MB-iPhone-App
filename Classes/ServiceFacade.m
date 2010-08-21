@@ -161,7 +161,19 @@
 }
 
 // rate
--(void) rateArtist:(NSString *)mbid withRating:(NSInteger *)rating {
+-(void) rateEntity:(id)entity withRating:(NSInteger)rating {
+	// get type of entity
+	NSString *xmlEntityType;
+	if([entity isKindOfClass:[Artist class]]) {
+		xmlEntityType = @"artist";
+	} else if ([entity isKindOfClass:[Label class]]) {
+		xmlEntityType = @"label";
+	} else if([entity isKindOfClass:[Track class]]) {
+		xmlEntityType = @"recording";
+	} else if([entity isKindOfClass:[ReleaseGroup class]]) {
+		xmlEntityType = @"release-group";
+	}
+	
 	service = [WebService alloc];
 	service.delegate = self;
 	
@@ -170,24 +182,7 @@
 	
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	
-	NSString *xml = [NSString stringWithFormat:@"<metadata xmlns=\"http://musicbrainz.org/ns/mmd-2.0#\"><artist-list><artist id=\"%@\"><user-rating>%d</user-rating></artist></artist-list></metadata>", mbid, rating];
-	NSLog(@"%@", xml);
-	[service sendData:url withData:xml];
-	
-	[urlToCall release];
-	//[xml release];
-}	
-
-// rate
--(void) tagArtist:(NSString *)mbid withTag:(NSString *)tag {
-	service = [WebService alloc];
-	service.delegate = self;
-	NSString *urlToCall;
-	urlToCall = @"http://test.musicbrainz.org/ws/2/tag?client=iphone-0.7";
-	
-	NSURL *url = [NSURL URLWithString:urlToCall];
-	
-	NSString *xml = [NSString stringWithFormat:@"<metadata xmlns=\"http://musicbrainz.org/ns/mmd-2.0#\"><artist-list><artist id=\"%@\"><user-tag-list><user-tag><name>%@</name></user-tag></user-tag-list></artist></artist-list></metadata>", mbid, tag];
+	NSString *xml = [NSString stringWithFormat:@"<metadata xmlns=\"http://musicbrainz.org/ns/mmd-2.0#\"><@%-list><@% id=\"%@\"><user-rating>%d</user-rating></@%></@%-list></metadata>", xmlEntityType, xmlEntityType, [entity getMBID], rating, xmlEntityType, xmlEntityType];
 	NSLog(@"%@", xml);
 	[service sendData:url withData:xml];
 	

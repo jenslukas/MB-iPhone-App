@@ -21,14 +21,14 @@ static NSString *passwordIdentifier = @"password";
 - (void) setAccountInformation:(NSString *) username withPassword:(NSString *)password {
 	// if username in keychain update otherwise create
 	if([self getKeychainMatching:usernameIdentifier]) {
-		[self updateKeychainValue:username];
+		[self updateKeychainValue:username forIdentifier:usernameIdentifier];
 	} else {
 		[self createKeychainValue:username forIdentifier:usernameIdentifier];
 	}
 	
 	// same as above for password
 	if([self getKeychainMatching:passwordIdentifier]) {
-		[self updateKeychainValue:password];
+		[self updateKeychainValue:password forIdentifier:passwordIdentifier];
 	} else {
 		[self createKeychainValue:password forIdentifier:passwordIdentifier];
 	}

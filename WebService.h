@@ -28,4 +28,5 @@
 @property (nonatomic, retain) id <RequestCompleteDelegate> delegate;
 
 -(void)getData:(NSURL *)url;
+-(void)sendData:(NSURL *)url withData:(NSString *) data;
 @end

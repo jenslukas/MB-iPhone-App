@@ -40,4 +40,6 @@
 -(void) getReleaseGroup:(NSString *)mbid;
 -(void) getTrack:(NSString *)mbid;
 -(void) getLabel:(NSString *)mbid;
+-(void) tagEntity:(id)entity withTag:(NSString *)tag;
+-(void) rateEntity:(id)entity withRating:(NSInteger)rating;
 @end

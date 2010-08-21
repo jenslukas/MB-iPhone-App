@@ -69,7 +69,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	ServiceFacade *serviceFacade = [ServiceFacade alloc];
-	[serviceFacade rateArtist:[self.entity getMBID] withRating:((5-indexPath.row)*20)];
+	[serviceFacade rateEntity:self.entity withRating:((5-indexPath.row)*20)];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
