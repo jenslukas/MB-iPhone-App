@@ -28,7 +28,6 @@
 	self.title = @"Musicbrainz";
 	self.search = [Search alloc];
 	[search setType:ArtistType];
-	[self.view setBackgroundColor:[UIColor grayColor]];
 	
 	// hide navigation bar
 	[self.navigationController setNavigationBarHidden:YES];

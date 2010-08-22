@@ -13,7 +13,7 @@
 #import "StringEditTableCell.h"
 #import "ServiceFacade.h"
 
-@interface LoginViewController : UITableViewController {
+@interface LoginViewController : UITableViewController <DataCompleteDelegate> {
 	@private
 	StringEditTableCell *usernameField;
 	StringEditTableCell *passwordField;

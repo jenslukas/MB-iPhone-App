@@ -10,9 +10,9 @@
 //	Abstract: Label Entity
 
 #import <Foundation/Foundation.h>
-#import "TaggedEntity.h"
+#import "RateAndTaggableEntity.h"
 
-@interface Label : NSObject <TaggedEntity> {
+@interface Label : NSObject <RateAndTaggableEntity> {
 	NSString *mbid;
 	NSString *type;
 	NSString *name;

@@ -132,7 +132,7 @@
 		849AC56D11FEB81200440656 /* ReleaseGroupSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseGroupSearchController.m; sourceTree = "<group>"; };
 		849AC57A11FEBBA200440656 /* TagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagListViewController.h; sourceTree = "<group>"; };
 		849AC57B11FEBBA200440656 /* TagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagListViewController.m; sourceTree = "<group>"; };
-		849AC57D11FEBC6000440656 /* TaggedEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaggedEntity.h; sourceTree = "<group>"; };
+		849AC57D11FEBC6000440656 /* RateAndTaggableEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateAndTaggableEntity.h; sourceTree = "<group>"; };
 		849CC82611D16E4300CC46F7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		84A0D89711D8D645009F2888 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		84A0D89811D8D645009F2888 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 				84A0D89811D8D645009F2888 /* Track.m */,
 				8487DEEA11FDAE50006DB16C /* ReleaseGroup.h */,
 				8487DEEB11FDAE50006DB16C /* ReleaseGroup.m */,
-				849AC57D11FEBC6000440656 /* TaggedEntity.h */,
+				849AC57D11FEBC6000440656 /* RateAndTaggableEntity.h */,
 				84C2A23C121177C00090FBDA /* AccountInformation.h */,
 				84C2A23D121177C00090FBDA /* AccountInformation.m */,
 			);

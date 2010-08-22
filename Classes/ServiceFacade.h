@@ -42,4 +42,5 @@
 -(void) getLabel:(NSString *)mbid;
 -(void) tagEntity:(id)entity withTag:(NSString *)tag;
 -(void) rateEntity:(id)entity withRating:(NSInteger)rating;
+-(void) checkLogin:(NSString *)username andPassword:(NSString *)password;
 @end

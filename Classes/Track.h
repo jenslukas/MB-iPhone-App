@@ -10,9 +10,9 @@
 //	Abstract: Track Entity
 
 #import <Foundation/Foundation.h>
-#import "TaggedEntity.h"
+#import "RateAndTaggableEntity.h"
 
-@interface Track : NSObject <TaggedEntity> {
+@interface Track : NSObject <RateAndTaggableEntity> {
 	NSString *mbid;
 	NSInteger position;
 	NSString *title;

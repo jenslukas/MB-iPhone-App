@@ -10,11 +10,11 @@
 //	Abstract: Show all tags of entity
 
 #import <UIKit/UIKit.h>
-#import "TaggedEntity.h"
+#import "RateAndTaggableEntity.h"
 
 @interface TagListViewController : UITableViewController {
-	id <TaggedEntity> entity;
+	id <RateAndTaggableEntity> entity;
 }
-@property(nonatomic, retain) id<TaggedEntity> entity;
+@property(nonatomic, retain) id<RateAndTaggableEntity> entity;
 -(void) addTag;
 @end

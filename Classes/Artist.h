@@ -10,9 +10,9 @@
 //	Abstract: Artist entity
 
 #import <Foundation/Foundation.h>
-#import "TaggedEntity.h"
+#import "RateAndTaggableEntity.h"
 
-@interface Artist : NSObject <TaggedEntity> {
+@interface Artist : NSObject <RateAndTaggableEntity> {
 	NSString *mbid;
 	NSString *name;	
 	NSInteger score;

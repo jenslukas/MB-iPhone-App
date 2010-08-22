@@ -10,9 +10,9 @@
 //	Abstract: ReleaseGroup entity
 
 #import <Foundation/Foundation.h>
-#import	"TaggedEntity.h"
+#import	"RateAndTaggableEntity.h"
 
-@interface ReleaseGroup : NSObject <TaggedEntity> {
+@interface ReleaseGroup : NSObject <RateAndTaggableEntity> {
 	NSString *title;
 	NSString *mbid;
 	NSString *type;

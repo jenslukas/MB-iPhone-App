@@ -11,12 +11,12 @@
 
 #import <UIKit/UIKit.h>
 #import "StringEditTableCell.h"
-#import "TaggedEntity.h"
+#import "RateAndTaggableEntity.h"
 
 @interface AddTagViewController : UITableViewController {
 	StringEditTableCell *editTableCell;
-	id <TaggedEntity> entity;
+	id <RateAndTaggableEntity> entity;
 }
 @property(nonatomic, retain) StringEditTableCell *editTableCell;
-@property(nonatomic, retain) id<TaggedEntity> entity;
+@property(nonatomic, retain) id<RateAndTaggableEntity> entity;
 @end

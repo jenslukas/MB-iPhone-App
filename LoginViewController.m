@@ -87,18 +87,23 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	// TODO check login
-	if(indexPath.row == 2) {
+	if(indexPath.section == 1) {
+		UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath.row];
+		cell.textLabel.text = @"Logging in...";
+		
+		// check login data
+		ServiceFacade *serviceFacade = [ServiceFacade alloc];
+		[serviceFacade checkLogin:[usernameField getText] andPassword:[passwordField getText]];
+		
+		// save login data
 		AccountInformation *account = [AccountInformation alloc];
 		[account setAccountInformation:[usernameField getText] withPassword:[passwordField getText]];
 		[self.navigationController popViewControllerAnimated:YES];
 	} 
 }
 
-
 #pragma mark -
 #pragma mark Memory management
-
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -106,9 +111,16 @@
     // Relinquish ownership any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
+
+-(void) finishedRequest:(ServiceResponse *)response {
+	UIAlertView *alertView;
+	if([response getResponseCode] == Success) {
+		[self.navigationController popViewControllerAnimated:YES];
+	} else {
+		alertView = [[UIAlertView alloc] initWithTitle:@"Login failed" message:@"Incorrect username/password combination" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alertView show];	
+	}
+	[alertView release];
 }
 
 - (void)dealloc {

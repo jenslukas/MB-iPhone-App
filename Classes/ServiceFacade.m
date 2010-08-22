@@ -20,7 +20,7 @@
 #import "LabelLookUpParser.h"
 #import "TrackLookUpParser.h"
 #import "ReleaseGroupSearchParser.h"
-#import "TaggedEntity.h"
+#import "RateAndTaggableEntity.h"
 
 @implementation ServiceFacade
 @synthesize delegate, results, searchInfo;
@@ -228,9 +228,17 @@
 }	
 
 -(void)checkLogin:(NSString *)username andPassword:(NSString *)password {
-	/*	
-	 http://test.musicbrainz.org//ws/2/artist/89ad4ac3-39f7-470e-963a-56509c546377?inc=user-tags
-	 */
+	service = [WebService alloc];
+	service.delegate = self;
+	
+	// create url
+	NSString *urlToCall;
+	urlToCall = @"	 http://test.musicbrainz.org/ws/2/artist/89ad4ac3-39f7-470e-963a-56509c546377?inc=user-tags";
+	NSURL *url = [NSURL URLWithString:urlToCall];
+	
+	[service getData:url];
+	
+	[urlToCall release];
 }
 
 // called by Web Service when data download finished
