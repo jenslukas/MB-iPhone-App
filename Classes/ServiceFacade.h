@@ -28,6 +28,7 @@
 	id <DataCompleteDelegate> delegate;
 	Search *searchInfo;
 	ServiceResponse *serviceResponse;
+	bool requestIsSearch;
 }
 
 @property (nonatomic, retain) NSArray *results;

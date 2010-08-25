@@ -31,6 +31,7 @@
 
 	passwordField = [[StringEditTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PasswordCell"];
 	passwordField.cellTextField.placeholder = @"Password";
+	passwordField.cellTextField.secureTextEntry = YES;
 	[passwordField setType:@"String"];	
 }
 
@@ -93,12 +94,12 @@
 		
 		// check login data
 		ServiceFacade *serviceFacade = [ServiceFacade alloc];
+		serviceFacade.delegate = self;
 		[serviceFacade checkLogin:[usernameField getText] andPassword:[passwordField getText]];
 		
 		// save login data
 		AccountInformation *account = [AccountInformation alloc];
 		[account setAccountInformation:[usernameField getText] withPassword:[passwordField getText]];
-		[self.navigationController popViewControllerAnimated:YES];
 	} 
 }
 

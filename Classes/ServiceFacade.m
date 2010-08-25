@@ -28,6 +28,7 @@
 // query for entity defined in Search object 
 -(void) search:(Search *)search {
 	self.searchInfo = search;
+	requestIsSearch = YES;
 	service = [WebService alloc];
 	service.delegate = self;
 	NSString *urlToCall;
@@ -70,6 +71,7 @@
 	self.searchInfo = [[Search alloc] init];
 	self.searchInfo.detailSearch = YES;
 	[self.searchInfo setType:ReleaseType];
+	requestIsSearch = YES;
 	
 	service = [WebService alloc];
 	service.delegate = self;
@@ -89,6 +91,7 @@
 	self.searchInfo = [[Search alloc] init];
 	self.searchInfo.detailSearch = YES;
 	[self.searchInfo setType:ArtistType];
+	requestIsSearch = YES;
 	
 	service = [WebService alloc];
 	service.delegate = self;
@@ -108,6 +111,7 @@
 	self.searchInfo = [[Search alloc] init];
 	self.searchInfo.detailSearch = YES;
 	[self.searchInfo setType:ReleaseGroupType];
+	requestIsSearch = YES;
 	
 	service = [WebService alloc];
 	service.delegate = self;
@@ -127,6 +131,7 @@
 	self.searchInfo = [[Search alloc] init];
 	self.searchInfo.detailSearch = YES;
 	[self.searchInfo setType:TrackType];
+	requestIsSearch = YES;
 	
 	service = [WebService alloc];
 	service.delegate = self;
@@ -146,6 +151,7 @@
 	self.searchInfo = [[Search alloc] init];
 	self.searchInfo.detailSearch = YES;
 	[self.searchInfo setType:LabelType];
+	requestIsSearch = YES;
 	
 	service = [WebService alloc];
 	service.delegate = self;
@@ -162,6 +168,7 @@
 
 // rate
 -(void) rateEntity:(id)entity withRating:(NSInteger)rating {
+	requestIsSearch = NO;
 	// get type of entity
 	NSString *xmlEntityType;
 	if([entity isKindOfClass:[Artist class]]) {
@@ -182,7 +189,7 @@
 	
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	
-	NSString *xml = [NSString stringWithFormat:@"<metadata xmlns=\"http://musicbrainz.org/ns/mmd-2.0#\"><@%-list><@% id=\"%@\"><user-rating>%d</user-rating></@%></@%-list></metadata>", xmlEntityType, xmlEntityType, [entity getMBID], rating, xmlEntityType, xmlEntityType];
+	NSString *xml = [NSString stringWithFormat:@"<metadata xmlns=\"http://musicbrainz.org/ns/mmd-2.0#\"><%@-list><%@ id=\"%@\"><user-rating>%d</user-rating></%@></%@-list></metadata>", xmlEntityType, xmlEntityType, [entity getMBID], rating, xmlEntityType, xmlEntityType];
 	NSLog(@"%@", xml);
 	[service sendData:url withData:xml];
 	
@@ -192,6 +199,7 @@
 
 // rate
 -(void) tagEntity:(id)entity withTag:(NSString *)tag {
+	requestIsSearch = NO;
 	// get type of entity
 	NSString *xmlEntityType;
 	if([entity isKindOfClass:[Artist class]]) {
@@ -228,12 +236,14 @@
 }	
 
 -(void)checkLogin:(NSString *)username andPassword:(NSString *)password {
+	requestIsSearch = NO;
+
 	service = [WebService alloc];
 	service.delegate = self;
 	
 	// create url
 	NSString *urlToCall;
-	urlToCall = @"	 http://test.musicbrainz.org/ws/2/artist/89ad4ac3-39f7-470e-963a-56509c546377?inc=user-tags";
+	urlToCall = @"http://test.musicbrainz.org/ws/2/artist/89ad4ac3-39f7-470e-963a-56509c546377?inc=user-tags";
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	
 	[service getData:url];
@@ -243,7 +253,7 @@
 
 // called by Web Service when data download finished
 -(void)finishedRequest:(ServiceResponse *)response {
-	if([response getResponseCode] == Success) {
+	if([response getResponseCode] == Success && requestIsSearch == YES) {
 		serviceResponse = response;
 		if(searchInfo.detailSearch) {
 			switch([searchInfo getType]) {
@@ -267,7 +277,7 @@
 			xmlParser.delegate = self;
 			[xmlParser parse:response.data];		
 			
-		} else {
+		} else if(searchInfo.detailSearch == NO) {
 			switch([searchInfo getType]) {
 				case ArtistType:
 					xmlParser = [ArtistSearchParser alloc];
