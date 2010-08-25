@@ -61,6 +61,7 @@
 	if(indexPath.row == 1) {
 		ServiceFacade *serviceFacade = [ServiceFacade alloc];
 		[serviceFacade tagEntity:self.entity withTag:[editTableCell getText]];
+		[self.navigationController popViewControllerAnimated:YES];		
 	}
 }
 

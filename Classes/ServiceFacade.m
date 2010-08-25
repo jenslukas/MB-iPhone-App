@@ -222,10 +222,14 @@
 	NSURL *url = [NSURL URLWithString:urlToCall];
 	
 	// create XML
-	NSMutableString *tagString;
-	for(int i = 0; i < [[entity tags] count]; i++) {
-		[tagString appendFormat:@"<user-tag><name>%@</name></user-tag>", [[entity tags] objectAtIndex:i]];
+	NSMutableString *tagString = [[NSMutableString alloc] initWithString:@""];
+	NSString *currentString;
+	NSMutableArray *tags = [entity tags];
+	for(int i = 0; i < [tags count]; i++) {
+		currentString = [tags objectAtIndex:i];
+		[tagString appendFormat:@"<user-tag><name>%@</name></user-tag>", currentString];
 	}
+	[tagString appendFormat:@"<user-tag><name>%@</name></user-tag>", tag];
 	
 	NSString *xml = [NSString stringWithFormat:@"<metadata xmlns=\"http://musicbrainz.org/ns/mmd-2.0#\"><%@-list><%@ id=\"%@\"><user-tag-list>%@</user-tag-list></%@></%@-list></metadata>", xmlEntityType, xmlEntityType, [entity getMBID], tagString, xmlEntityType, xmlEntityType];
 	NSLog(@"%@", xml);
